@@ -7,7 +7,7 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-			{{Form::open(['url'=>url('client-add'),'id'=>'general_form'])}}	
+			{{Form::open(['url'=>url($form_action),'id'=>'general_form'])}}	
             <div class="page-breadcrumb bg-white">
                <div class="row align-items-center">
                   <div class="col-md-12 d-flex justify-content-between align-items-center">
@@ -33,7 +33,6 @@
                      </div>
                      <div class="col-md-8">
                         <div class="user-detail">
-                           <form>
                               <div class="general-info">
                                  <h4 class="mb-4">Contact Information</h4>
                                  <div class="form-group">
@@ -98,7 +97,6 @@
                                     </select>
                                  </div>
                               </div>
-                           </form>
                         </div>
                      </div>
                   </div>

@@ -18,8 +18,12 @@ Route::post('/login','HomeController@loginPost');
 Route::get('/dashboard','HomeController@dashboard');
 Route::get('/client','HomeController@client');
 Route::get('/client-add','HomeController@clientDetail');
+Route::post('/client-add/{id}','HomeController@clientAddPost');
 Route::post('/client-add','HomeController@clientAddPost');
 Route::get('/client-detail/{id}','HomeController@clientDetail');
 Route::get('/admin-profile','HomeController@adminProfile');
 Route::get('/search-result','HomeController@searchResult');
 Route::get('/change-password','HomeController@changePassword');
+
+
+Route::get('/web-open','HomeController@webOpen');

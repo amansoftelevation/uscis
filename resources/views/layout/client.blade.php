@@ -41,9 +41,9 @@
                   <!-- ============================================================== -->
                   <!-- Logo -->
                   <!-- ============================================================== -->
-                  <a class="navbar-brand" href="./">
+                  <a class="navbar-brand" href="{{ url('/') }}">
                   <span class="logo-text pl-0 w-100 text-center">
-                  <img src="images/logo.png" alt="homepage" width="120px" />
+                  <img src="{{ url('images/logo.png') }}" alt="homepage" width="120px" />
                   </span>
                   </a>
                   <!-- ============================================================== -->
@@ -160,10 +160,10 @@
                      <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" aria-expanded="false"></span><span class="avatar avatar-online"><img src="{{ url('clients/images/user.png') }}" alt="avatar"><i></i></span><span class="ml-3 user-name text-bold-700">Sanjay Sobti</a>
                         <div class="dropdown-menu dropdown-menu-right">
-                           <a class="dropdown-item" href="admin-profile"><i class="fas fa-user-plus"></i> Manage Account</a>
-                           <a class="dropdown-item" href="change-password"><i class="fas fa-key"></i> Change Password</a>
+                           <a class="dropdown-item" href="{{ url('admin-profile') }}"><i class="fas fa-user-plus"></i> Manage Account</a>
+                           <a class="dropdown-item" href="{{ url('change-password') }}"><i class="fas fa-key"></i> Change Password</a>
                            <!-- <a class="dropdown-item" href="#"><i class="fas fa-sync-alt"></i> Activity Log</a> -->
-                           <a class="dropdown-item" href="logout"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                           <a class="dropdown-item" href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i> Log out</a>
                         </div>
                      </li>
                      <!-- ============================================================== -->
@@ -187,14 +187,14 @@
                   <ul id="sidebarnav">
                      <!-- User Profile-->
                      <li class="sidebar-item mt-2">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('dashboard') }}"
                            aria-expanded="false">
                         <i class="fas fa-th-large"></i>
                         <span class="hide-menu">Dashboard</span>
                         </a>
                      </li>
                      <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="client"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('client') }}"
                            aria-expanded="false">
                         <i class="fas fa-users"></i>
                         <span class="hide-menu">Clients</span>
@@ -215,7 +215,7 @@
                         </a>
                      </li> -->
                      <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/') }}"
                            aria-expanded="false">
                         <i class="fas fa-sign-out-alt"></i>
                         <span class="hide-menu">Logout</span>
