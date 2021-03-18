@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Redirect;
 use App\User;
+use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -59,7 +60,7 @@ class HomeController extends Controller
 	public function clientDetail($id = null){
 		$client = (object)array(
 				'email'=>'','phone'=>'','name'=>'','dob'=>'','origin'=>'','gender'=>'','eyes'=>'','hair'=>'',
-				'status'=>'','document'=>''
+				'status'=>'','document'=>'','image'=>false
 			);
 		$form_action = 'client-add';
 		if($id){
@@ -86,6 +87,50 @@ class HomeController extends Controller
 			return Redirect::to('/');
 		}
 		
+	}
+	
+	public function updateimage(){
+		
+		
+		$account_sid = getenv("SKd046b216db3592fd987c14a7ea8a1f66");
+		$auth_token = getenv("mipwys9ZRvqoQDXTknKvPyFxqq45EYL7");
+		$twilio_number = getenv("+916239463839");
+		
+		$client = new Twilio\Rest\Client($account_sid, $auth_token);
+		$message = $client->messages->create(
+		  $twilio_number, // Text this number
+		  [
+			'from' => '+9178303000796', // From a valid Twilio number
+			'body' => 'Hello from Twilio!'
+		  ]
+		);
+
+
+		// $client = new Client($account_sid, $auth_token);
+		// $client->messages->create($recipients, 
+            // ['from' => $twilio_number, 'body' => 'wwwwwwwwwww'] );
+			
+			
+		// $input = $_REQUEST;
+		print_r($message);
+		die('wwwwwwwwwww');
+		// return view('changePassword');
+	}
+	
+	public function updateimagePost(Request $request){
+		header('Access-Control-Allow-Origin:  *');
+		header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Authorization, Origin');
+		header('Access-Control-Allow-Methods:  GET, POST, PUT, DELETE, OPTIONS');
+		$request = $request->all();
+		$image = $request['href'];
+		$imageInfo = explode(";base64,", $image);     
+		$image = str_replace(' ', '+', $imageInfo[1]);
+		$file = base64_decode($image);
+        $folderName = 'public/clients/';
+        $safeName = time().'.png';
+        $success = file_put_contents(public_path().'/clients/'.$safeName, $file);
+		User::where('user_id',$request['user_id'])->update(array('image'=>$safeName));
+		return response()->json(['status' => 1], 200);
 	}
 	
 	public function changePassword(){

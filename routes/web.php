@@ -25,5 +25,8 @@ Route::get('/admin-profile','HomeController@adminProfile');
 Route::get('/search-result','HomeController@searchResult');
 Route::get('/change-password','HomeController@changePassword');
 
+Route::get('/updateimage','HomeController@updateimage');
+Route::post('/updateimage','HomeController@updateimagePost');
+
 
 Route::get('/web-open','HomeController@webOpen');

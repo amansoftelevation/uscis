@@ -22,7 +22,11 @@
                      <div class="col-md-4">
                         <div class="user-image-col">
                            <div class="avatar-wrapper">
-                              <img class="profile-pic" src="{{ url('clients/images/user-image.png') }}" />
+							<?php if($client->image){ ?>
+								<img class="profile-pic" src="{{ url('clients/'.$client->image) }}" />
+							<?php }else{ ?>
+								<img class="profile-pic" src="{{ url('clients/images/user-image.png') }}" />
+							<?php } ?>
                               <div class="upload-button">
                                  <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                               </div>
