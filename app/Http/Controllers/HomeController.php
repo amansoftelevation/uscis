@@ -71,7 +71,17 @@ class HomeController extends Controller
 	}
 	
 	public function adminProfile(){
-		return view('adminProfile');
+		$userAuth = Auth::user();
+		return view('adminProfile')->with('userAuth',$userAuth);
+	}
+	
+	public function adminProfilePost(Request $request){
+		
+		$input = $request->all();
+		unset($input['_token']);
+		User::where('id',Auth::user()->id)->update($input);
+		return Redirect::to('/admin-profile');
+		
 	}
 	
 	public function searchResult(Request $request){

@@ -7,6 +7,7 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
+			{{Form::open(['url'=>url('admin-profile'),'id'=>'general_form'])}}	
             <div class="page-breadcrumb bg-white">
                <div class="row align-items-center">
                   <div class="col-md-12 d-flex justify-content-between align-items-center">
@@ -30,46 +31,33 @@
                            </div>
                         </div>
                         <div class="admin-detail-col pl-0 mt-5">
-                           <form>
                               <div class="general-info">
                                  <h4 class="mb-4">Contact Information</h4>
                                  <div class="form-group">
                                     <label for="InputEmail1">Email address:</label>
-                                    <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                    <input type="email" name="email" value="{{$userAuth->email}}" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                                  </div>
                                  <div class="form-group">
                                     <label for="InputNumber">Phone Number:</label>
-                                    <input type="number" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter number">
+                                    <input type="number" name="phone" value="{{$userAuth->phone}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter number">
                                  </div>
                               </div>
                               <div class="general-info">
                                  <h4 class="mb-4">General Information</h4>
                                  <div class="form-group">
                                     <label for="InputName">First Name:</label>
-                                    <input type="text" class="form-control" id="InputEmail1" aria-describedby="emailName" placeholder="Enter first name">
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="InputName">Last Name:</label>
-                                    <input type="text" class="form-control" id="InputEmail1" aria-describedby="emailName" placeholder="Enter last name">
+                                    <input type="text" name="name" value="{{$userAuth->name}}" class="form-control" id="InputEmail1" aria-describedby="emailName" placeholder="Enter name">
                                  </div>
                                  <div class="form-group">
                                     <label for="InputNumber">DOB:</label>
-                                    <input type="date" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter Date of Birth">
+                                    <input type="date" name="dob" value="{{$userAuth->dob}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter Date of Birth">
                                  </div>
-                                  <!-- <div class="form-group">
-                                    <label for="InputNumber">Password:</label>
-                                    <input type="password" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter password">
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="InputNumber">Confirm Password:</label>
-                                    <input type="password" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Confirm password">
-                                 </div> -->
                                  <div class="form-group">
                                     <label for="InputNumber">Gender:</label>
-                                    <select>
-                                       <option>Male</option>
-                                       <option>Female</option>
-                                       <option>Other</option>
+                                    <select name="gender">
+                                       <option @if($userAuth->gender === 'Male') ? selected : '' @endif>Male</option>
+                                       <option @if($userAuth->gender === 'Female') ? selected : '' @endif>Female</option>
+                                       <option @if($userAuth->gender === 'Other') ? selected : '' @endif>Other</option>
                                     </select>
                                  </div>
                               </div>
@@ -77,16 +65,16 @@
                                  <h4 class="mb-4">Address Information</h4>
                                  <div class="form-group">
                                     <label for="InputSelect">Address:</label>
-                                    <textarea class="w-100" placeholder="Enter your address"></textarea>
+                                    <textarea name="address" class="w-100" placeholder="Enter your address">{{$userAuth->address}}</textarea>
                                  </div>
                               </div>
-                           </form>
+                           
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-            
+            {{Form::close()}}
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->

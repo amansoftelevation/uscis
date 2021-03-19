@@ -22,6 +22,7 @@ Route::post('/client-add/{id}','HomeController@clientAddPost');
 Route::post('/client-add','HomeController@clientAddPost');
 Route::get('/client-detail/{id}','HomeController@clientDetail');
 Route::get('/admin-profile','HomeController@adminProfile');
+Route::post('/admin-profile','HomeController@adminProfilePost');
 Route::get('/search-result','HomeController@searchResult');
 Route::get('/change-password','HomeController@changePassword');
 
