@@ -163,7 +163,7 @@
                            <a class="dropdown-item" href="{{ url('admin-profile') }}"><i class="fas fa-user-plus"></i> Manage Account</a>
                            <a class="dropdown-item" href="{{ url('change-password') }}"><i class="fas fa-key"></i> Change Password</a>
                            <!-- <a class="dropdown-item" href="#"><i class="fas fa-sync-alt"></i> Activity Log</a> -->
-                           <a class="dropdown-item" href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                           <a class="dropdown-item" href="{{ url('/') }}"><i class="fas fa-sign-out-alt"></i> Log out</a>
                         </div>
                      </li>
                      <!-- ============================================================== -->
