@@ -5,6 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Selfie Anywhere</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+	<meta name='user_id' data-id="{{$user_id}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel='stylesheet' type='text/css' media='screen' href='{{ url("webcam/style/selfie-anywhere.css")}}'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

@@ -16,7 +16,11 @@
             <div class="row">
                <div class="col-md-4">
                   <div class="searchid-img">
-                     <img src="images/id-img.png" align="user-image">
+					@if($client->image)
+						<img src="{{$client->image}}" align="user-image">
+					@else
+						<img src="images/id-img.png" align="user-image">
+					@endif
                   </div>
                </div>
                <div class="col-md-8">
@@ -35,9 +39,7 @@
                      <div class="detail-col-user p-detail-col border-top mt-0">
                         <p>Please contact attorney on record with any immigration issues:<br>
                            <b>Law Offices of sanjay Sobti</b>
-                           4230 Green River Road, Second Floor<br>
-                           Corona, CA 92788<br>
-                           (949)555-1212
+						   {{$admin->address}}
                         </p>
                         <button type="submit" class="text-uppercase new-search-btn" onclick="location.href='index.html'">New Search</button>
                      </div>

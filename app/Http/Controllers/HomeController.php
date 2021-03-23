@@ -87,9 +87,10 @@ class HomeController extends Controller
 	public function searchResult(Request $request){
 		
 		if($request->client){
+			$admin = User::where('roll_id',2)->first();
 			$client = User::where('user_id',$request->client)->first();
 			if($client){
-				return view('searchResult')->with('client',$client);
+				return view('searchResult')->with('client',$client)->with('admin',$admin);
 			}else{
 				return Redirect::to('/');
 			}
@@ -139,7 +140,8 @@ class HomeController extends Controller
         $folderName = 'public/clients/';
         $safeName = time().'.png';
         $success = file_put_contents(public_path().'/clients/'.$safeName, $file);
-		User::where('user_id',$request['user_id'])->update(array('image'=>$safeName));
+		$safeName_image = 'clients/'.$safeName;
+		User::where('user_id',$request['user_id'])->update(array('image'=>$safeName_image));
 		return response()->json(['status' => 1], 200);
 	}
 	
@@ -147,7 +149,12 @@ class HomeController extends Controller
 		return view('changePassword');
 	}
 	
-	public function webOpen(){
-		return view('web_open');
+	public function webOpen(Request $request){
+		if($request->user_id){
+			$user_id = $request->user_id;
+		}else{
+			$user_id = '';
+		}
+		return view('web_open')->with('user_id',$user_id);
 	}
 }

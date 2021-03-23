@@ -23,9 +23,9 @@
                         <div class="user-image-col">
                            <div class="avatar-wrapper">
 							<?php if($client->image){ ?>
-								<img class="profile-pic" src="{{ url('clients/'.$client->image) }}" />
+								<img class="profile-pic" src="{{ url($client->image) }}" />
 							<?php }else{ ?>
-								<img class="profile-pic" src="{{ url('clients/images/user-image.png') }}" />
+								<img class="profile-pic" src="{{ url('images/id-img.png') }}" />
 							<?php } ?>
                               <div class="upload-button">
                                  <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>

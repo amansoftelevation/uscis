@@ -174,6 +174,25 @@ $("#take-photo").click(function () {
     });
 });
 
+
+$("#download-photo").click(function () {
+	var href = $(this).attr('href');
+	var user_id = $('meta[name="user_id"]').data('id');
+	$.ajax({
+	  type: "POST",
+	  url: "updateimage",
+	  data: {
+		  user_id: user_id,
+		  href: href
+	  },
+	  success: function(data){
+		  if(data.status){
+			  location.href = "search-result?client="+user_id;
+		  }
+	  }
+	});
+});
+
 $("#resume-camera").click(function () {
     webcam.stream()
         .then(facingMode =>{
