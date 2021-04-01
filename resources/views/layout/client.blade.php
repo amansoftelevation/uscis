@@ -16,6 +16,8 @@
       <!-- Custom CSS -->
       <link href="{{ url('clients/css/style.min.css') }}" rel="stylesheet">
       <link href="{{ url('clients/css/style.css') }}" rel="stylesheet">
+      <link href="http://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
+	  
    </head>
    <body>
       <!-- ============================================================== -->
@@ -68,7 +70,7 @@
                   <!-- ============================================================== -->
                   <!-- Right side toggle and nav items -->
                   <!-- ============================================================== -->
-                  <ul class="navbar-nav  d-flex align-items-center pl-25">
+                  <!-- ul class="navbar-nav  d-flex align-items-center pl-25">
                       <li class=" in">
                         <form role="search" class="app-search d-none d-md-block mr-3">
                            <input type="text" placeholder="Property Search" class="form-control mt-0">
@@ -77,7 +79,7 @@
                            </a>
                         </form>
                      </li>
-                  </ul>
+                  </ul -->
                   <ul class="navbar-nav ml-auto d-flex align-items-center">
                      <!-- ============================================================== -->
                      <!-- Search -->
@@ -85,7 +87,7 @@
                      
                      <li class="dropdown dropdown-notification nav-item">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="fa fa-bell" style="font-size: 24px" aria-hidden="true"></i><span class="badge badge-pill badge-danger badge-up badge-glow">6</span></a>
-                        <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                        <!-- ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                            <li class="dropdown-menu-header">
                               <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6>
                               <span class="notification-tag badge badge-danger float-right m-0">5 New</span>
@@ -152,7 +154,7 @@
                               </div>
                            </li>
                            <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all notifications</a></li>
-                        </ul>
+                        </ul -->
                      </li>
                      <!-- ============================================================== -->
                      <!-- User profile and search -->
@@ -276,5 +278,20 @@
       <script src="{{ url('clients/plugins/bower_components/chartist/dist/chartist.min.js') }}"></script>
       <script src="{{ url('clients/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
       <script src="{{ url('clients/js/pages/dashboards/dashboard1.js') }}"></script>
+      <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+	  
+	  
+      <script>
+		$(document).ready( function () {
+			$('#myTable').DataTable({
+				"aaSorting": [[0]],
+				"aoColumnDefs": [
+						{ "bSortable": false, "aTargets": [ 0, 1, 2, 3 ] }
+					]
+			});
+		});
+	  </script>
+	  
+	  
    </body>
 </html>

@@ -53,7 +53,7 @@ class HomeController extends Controller
 	}
 	
 	public function client(){
-		$users = User::where('roll_id',1)->get();
+		$users = User::where('roll_id',1)->orderBy('id','DESC')->get();
 		return view('client')->with('users',$users);
 	}
 	

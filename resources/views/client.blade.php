@@ -21,7 +21,7 @@
                   <div class="col-md-12 p-0">
                     <div class="main-table-col box-shadow-none mt-0 pt-0">
                       <div class="table-responsive custom-res-table border-radius-8">
-                          <table class="table calender-table mt-0 mb-0 client-table ">
+                          <table id="myTable" class="table calender-table mt-0 mb-0 client-table ">
                                <thead class="thead-dark">
                                  <tr>
                                    <th scope="col">ID</th>
@@ -33,10 +33,10 @@
                                <tbody>
 								@foreach($users as $user)
                                  <tr>
-                                   <td>{{$user->user_id}}</td>
+                                   <td><a class="detail-page" href="client-detail/{{$user->user_id}}">{{$user->user_id}}</a></td>
                                    <td><a class="detail-page" href="client-detail/{{$user->user_id}}">{{$user->name}}</a></td>
                                    <td>{{$user->origin.' '.$user->eyes}}</td>
-                                   <td><a class="custom-status-btn closed-btn" href="#">Closed</td>
+                                   <td><a class="custom-status-btn closed-btn" href="client-detail/{{$user->user_id}}">{{$user->document}}</td>
                                  </tr>
 								@endforeach
                                </tbody>

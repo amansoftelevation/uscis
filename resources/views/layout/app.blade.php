@@ -31,7 +31,7 @@
                         <a class="nav-link" href="#"><span>* * *</span>Provider</a>
                      </li>
                      <li class="nav-item login-btn">
-                        <button type="button" class="" data-toggle="modal" data-target="#exampleModal">Login</button>
+                        <button type="button" id="example_login_model" class="" data-toggle="modal" data-target="#exampleModal">Login</button>
                      </li>
                   </ul>
                </div>
@@ -52,6 +52,9 @@
                        <div class="form-label-group">
                         <label for="inputEmail">Email address</label>
                         <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+						@if(Session::has('invalid_login'))
+							<p class="text-danger">{{ Session::get('invalid_login') }}</p>
+						@endif
                        </div>
 
                        <div class="form-label-group">
@@ -103,6 +106,6 @@
       <script src="js/slim.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
-
+		@yield('script')
    </body>
 </html>
