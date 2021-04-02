@@ -12,6 +12,7 @@
       <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
       <!-- Custom CSS -->
       <link href="{{ url('clients/plugins/bower_components/chartist/dist/chartist.min.css') }}" rel="stylesheet">
+	  <link href="https://beontime.io/css/toaster.css" rel="stylesheet">
       <link rel="stylesheet" href="{{ url('clients/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css') }}">
       <!-- Custom CSS -->
       <link href="{{ url('clients/css/style.min.css') }}" rel="stylesheet">
@@ -279,6 +280,7 @@
       <script src="{{ url('clients/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
       <script src="{{ url('clients/js/pages/dashboards/dashboard1.js') }}"></script>
       <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+	  <script src="https://beontime.io/js/jquery.toast.js"></script>
 	  
 	  
       <script>
@@ -289,8 +291,40 @@
 						{ "bSortable": false, "aTargets": [ 0, 1, 2, 3 ] }
 					]
 			});
+			
 		});
 	  </script>
+	  
+	  @if(Session::has('success_message'))
+	   <script>
+			$.toast({
+				  heading             : 'Success',
+				  text                : "{{Session::get('success_message')}}",
+				  loader              : true,
+				  loaderBg            : '#fff',
+				  showHideTransition  : 'fade',
+				  icon                : 'success',
+				  hideAfter           : 3000,
+				  position            : 'top-right'
+			});
+	   
+	   </script>
+	  @endif
+	  @if(Session::has('error_message'))
+	   <script>
+			$.toast({
+				  heading             : 'Error',
+				  text                : "{{Session::get('error_message')}}",
+				  loader              : true,
+				  loaderBg            : '#fff',
+				  showHideTransition  : 'fade',
+				  icon                : 'error',
+				  hideAfter           : 3000,
+				  position            : 'top-right'
+			  });
+	   
+	   </script>
+	  @endif
 	  
 	  
    </body>

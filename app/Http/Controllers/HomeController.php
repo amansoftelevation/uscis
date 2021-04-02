@@ -128,6 +128,18 @@ class HomeController extends Controller
 		// return view('changePassword');
 	}
 	
+	public function changePasswordPost(Request $request){
+		// $request = $request->all();
+		if($request->new_password == $request->confirm_password){
+			$password_sss = Hash::make($request->old_password);
+			$userId = Auth::user();
+			User::where('id',$userId->id)->update(array('password'=>$password_sss));
+			return Redirect::to('/change-password')->with('success_message','Your password has been change successfully');
+		}else{
+			return Redirect::to('/change-password')->with('error_message','Your confirm password does not match');
+		}
+	}
+	
 	public function updateimagePost(Request $request){
 		header('Access-Control-Allow-Origin:  *');
 		header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Authorization, Origin');
