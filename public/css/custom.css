@@ -41,7 +41,7 @@ header ul li.nav-item a {
 
 header ul li.nav-item a span,
 header ul li.nav-item.active a span {
-	color: #3d3aaf;
+	color: #b8b4bc;
 	font-size: 12px;
 	text-transform: capitalize;
 	font-weight: normal;
@@ -73,7 +73,7 @@ li.nav-item.login-btn {
 }
 
 header ul li.nav-item a {
-	padding: 14px 20px !important;
+	padding: 16px 20px !important;
 	border-left: 1px solid #252b63;
 }
 
@@ -83,6 +83,11 @@ header ul li.nav-item.provider-list a {
 
 header ul li.nav-item.provider-list a span {
 	color: #fff;
+}
+header ul li.nav-item.provider-list a span.star-li-icon.position-absolute {
+    top: 2px;
+    font-size: 15px;
+    line-height: normal;
 }
 /*********login popup css*************/
 form.form-signin .form-label-group {
@@ -137,12 +142,16 @@ section.banner-section {
 }
 
 p.identify-p {
-	color: #363ba0;
+	color: #91a8fa;
 	font-weight: bold;
 }
 
+.font-normal{
+	font-weight: normal !important;
+}
+
 h1.verify-heading {
-	color: #aabdf6;
+	color: #abbff1;
 	font-weight: bold;
 	font-size: 30px;
 }

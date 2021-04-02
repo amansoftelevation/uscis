@@ -10,15 +10,16 @@
             <div class="page-breadcrumb bg-white">
                <div class="row align-items-center">
                   <div class="col-lg-12 col-md-12 d-flex justify-content-between align-items-center">
-                     <h3 class="page-title font-bold">Clients</h3>
+                     <h3 class="page-title font-bold">Providers</h3>
                      <a href="client-add"><button class="custom-btn-col">Add New</button></a>
                   </div>
                </div>
                <!-- /.col-lg-12 -->
             </div>
             <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-12 p-0">
+               <div class="row data-table-custom-table m-0">
+                  
+                     <div class="col-md-12 p-0">
                     <div class="main-table-col box-shadow-none mt-0 pt-0">
                       <div class="table-responsive custom-res-table border-radius-8">
                           <table id="myTable" class="table calender-table mt-0 mb-0 client-table ">
@@ -45,6 +46,10 @@
                       </div>
                   </div>
               </div>
+					 
+				
+                  </div>
+              
               
             </div>
             <!-- ============================================================== -->
@@ -60,6 +65,5 @@
             <!-- End footer -->
             <!-- ============================================================== -->
          </div>
-        
 
 @endsection
