@@ -10,8 +10,8 @@
             <div class="page-breadcrumb bg-white">
                <div class="row align-items-center">
                   <div class="col-lg-12 col-md-12 d-flex justify-content-between align-items-center">
-                     <h3 class="page-title font-bold">Clients</h3>
-                     <a href="client-add"><button class="custom-btn-col">Add New</button></a>
+                     <h3 class="page-title font-bold">Providers</h3>
+                     <a href="provider-add"><button class="custom-btn-col">Add New</button></a>
                   </div>
                </div>
                <!-- /.col-lg-12 -->
@@ -34,10 +34,10 @@
                                <tbody>
 								@foreach($users as $user)
                                  <tr>
-                                   <td><a class="detail-page" href="client-detail/{{$user->user_id}}">{{$user->user_id}}</a></td>
-                                   <td><a class="detail-page" href="client-detail/{{$user->user_id}}">{{$user->name}}</a></td>
+                                   <td><a class="detail-page" href="provider-add/{{$user->user_id}}">{{$user->user_id}}</a></td>
+                                   <td><a class="detail-page" href="provider-add/{{$user->user_id}}">{{$user->name}}</a></td>
                                    <td>{{$user->origin.' '.$user->eyes}}</td>
-                                   <td><a class="custom-status-btn closed-btn" href="client-detail/{{$user->user_id}}">{{$user->document}}</td>
+                                   <td><a class="custom-status-btn closed-btn" href="provider-add/{{$user->user_id}}">{{$user->document}}</td>
                                  </tr>
 								@endforeach
                                </tbody>

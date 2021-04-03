@@ -200,6 +200,13 @@
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('client') }}"
                            aria-expanded="false">
                         <i class="fas fa-users"></i>
+                        <span class="hide-menu">Clients</span>
+                        </a>
+                     </li>
+					 <li class="sidebar-item">
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('providers') }}"
+                           aria-expanded="false">
+                        <i class="fas fa-users"></i>
                         <span class="hide-menu">Providers</span>
                         </a>
                      </li>

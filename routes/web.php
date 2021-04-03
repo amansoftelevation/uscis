@@ -27,6 +27,13 @@ Route::get('/search-result','HomeController@searchResult');
 Route::get('/change-password','HomeController@changePassword');
 Route::post('/change-password','HomeController@changePasswordPost');
 
+Route::get('/providers','ProviderController@index');
+Route::get('/provider-add','ProviderController@provideradd');
+Route::get('/provider-add/{id}','ProviderController@provideradd');
+Route::post('/provider-add','ProviderController@provideraddPost');
+Route::post('/provider-add/{id}','ProviderController@provideraddPost');
+
+
 Route::get('/updateimage','HomeController@updateimage');
 Route::post('/updateimage','HomeController@updateimagePost');
 
