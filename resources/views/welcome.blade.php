@@ -14,6 +14,9 @@
                      <button type="submit" formaction="search-result"
                       class="custom-button text-uppercase">Verify</button>
                   </div>
+				  @if(Session::has('invaid_cient'))
+					<p class="text-danger">{{Session::get('invaid_cient')}}</p>
+				  @endif
                </form>
             </div>
          </div>

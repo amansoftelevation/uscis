@@ -60,10 +60,10 @@ class HomeController extends Controller
 			if($client){
 				return view('searchResult')->with('client',$client)->with('admin',$admin);
 			}else{
-				return Redirect::to('/');
+				return Redirect::to('/')->with('invaid_cient','This is invaid ID Number');
 			}
 		}else{
-			return Redirect::to('/');
+			return Redirect::to('/')->with('invaid_cient','ID Number is requred');
 		}
 		
 	}
