@@ -22,18 +22,14 @@ class HomeController extends Controller
 			'password'  => $request->password
 		);
 		if(Auth::attempt($userdata)) {
-			
-			echo '<pre>';
-			print_r(Auth::user());
-			die;
-			// $authUser = Auth::user()->roll_id;
-			// if($authUser === 1){
-				// return Redirect::to('provider/dashboard');
-			// }else if($authUser === 2){
-				// return Redirect::to('admin/dashboard');
-			// }else{
-				// return Redirect::to('/');
-			// }
+			$authUser = Auth::user()->roll_id;
+			if($authUser === 1){
+				return Redirect::to('provider/dashboard');
+			}else if($authUser === 2){
+				return Redirect::to('admin/dashboard');
+			}else{
+				return Redirect::to('/');
+			}
 		} else {
 			return Redirect::to('/')->with('invalid_login','Invalid email or password');
 		}
