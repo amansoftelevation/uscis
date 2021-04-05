@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','HomeController@index');
 Route::post('/login','HomeController@loginPost');
 
-Route::get('/admin-profile','HomeController@adminProfile');
-Route::post('/admin-profile','HomeController@adminProfilePost');
 Route::get('/search-result','HomeController@searchResult');
 Route::get('/change-password','HomeController@changePassword');
 Route::post('/change-password','HomeController@changePasswordPost');
@@ -39,6 +37,10 @@ Route::group(['prefix'=>'provider'], function () {
 	Route::post('/client-add/{id}','ProviderController@clientAddPost');
 	Route::post('/client-add','ProviderController@clientAddPost');
 	Route::get('/client-detail/{id}','ProviderController@clientDetail');
+	
+	Route::get('/profile','ProviderController@adminProfile');
+	Route::post('/admin-profile','ProviderController@adminProfilePost');
+
 });
 
 

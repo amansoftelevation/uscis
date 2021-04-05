@@ -34,23 +34,8 @@ class HomeController extends Controller
 			return Redirect::to('/')->with('invalid_login','Invalid email or password');
 		}
 	}
-	
-	
 
 	
-	public function adminProfile(){
-		$userAuth = Auth::user();
-		return view('adminProfile')->with('userAuth',$userAuth);
-	}
-	
-	public function adminProfilePost(Request $request){
-		
-		$input = $request->all();
-		unset($input['_token']);
-		User::where('id',Auth::user()->id)->update($input);
-		return Redirect::to('/admin-profile');
-		
-	}
 	
 	public function searchResult(Request $request){
 		

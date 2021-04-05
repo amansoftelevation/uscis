@@ -179,7 +179,7 @@ form .form-field-custom button {
 	color: #fff;
 	font-weight: bold;
 	font-size: 14px;
-	width: 100%;
+	width: 75%;
 	margin-left: 20px;
 	cursor: pointer;
 }
@@ -214,13 +214,18 @@ span.color-primary-custom {
 .inner-img-gallery {
 	margin-bottom: 35px;
 }
-
+section.single-img-banner{
+	background-image: url('../images/building-img.png'); 
+	height: 450px;
+	background-repeat: no-repeat;
+	background-size:cover; 
+}
 
 /**********Footer-css***************/
 
 footer.footer {
 	background-color: #16203d;
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 	padding: 35px 0;
 }
 
@@ -231,6 +236,10 @@ ul.quick-links li {
 	font-weight: 500;
 	text-transform: uppercase;
 }
+
+ul.quick-links li a, p.copy-right-col {
+    color: #97adff;
+}	
 
 ul.quick-links {
 	margin-bottom: 25px;
@@ -281,6 +290,7 @@ h2.result-heading {
 }
 section.searc-id-detail {
     margin-top: 60px;
+    margin-bottom: 40px;
 }
 p.text-gray-custom {
     color: #949294;

@@ -21,7 +21,7 @@
             </div>
          </div>
       </section>
-      <section class="images-gallery-col mt-5" >
+      <!--section class="images-gallery-col mt-5" >
          <div class="container">
             <div class="row">
                <div class="col-md-4 col-sm-6">
@@ -74,7 +74,14 @@
                </div>
             </div>
          </div>
-      </section>
+      </section -->
+	  
+	  <section class="single-img-banner">
+      <div class="container"></div>
+     </section>
+
+
+
      
 
 @endsection

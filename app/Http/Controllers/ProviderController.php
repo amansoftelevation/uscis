@@ -56,4 +56,19 @@ class ProviderController extends Controller
 		}
 		return Redirect::to('/provider/client')->with('success_message',$message);
 	}
+	
+	
+	public function adminProfile(){
+		$userAuth = Auth::user();
+		return view('adminProfile')->with('userAuth',$userAuth);
+	}
+	
+	public function adminProfilePost(Request $request){
+		
+		$input = $request->all();
+		unset($input['_token']);
+		User::where('id',Auth::user()->id)->update($input);
+		return Redirect::to('/admin-profile');
+		
+	}
 }
