@@ -190,26 +190,30 @@
                   <ul id="sidebarnav">
                      <!-- User Profile-->
                      <li class="sidebar-item mt-2">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('dashboard') }}"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url(user_url('dashboard')) }}"
                            aria-expanded="false">
                         <i class="fas fa-th-large"></i>
                         <span class="hide-menu">Dashboard</span>
                         </a>
                      </li>
+					 @if(Auth::user()->roll_id === 1)
                      <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('client') }}"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url(user_url('client')) }}"
                            aria-expanded="false">
                         <i class="fas fa-users"></i>
                         <span class="hide-menu">Clients</span>
                         </a>
                      </li>
+					@endif
+					@if(Auth::user()->roll_id === 2)
 					 <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('providers') }}"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url(user_url('providers')) }}"
                            aria-expanded="false">
                         <i class="fas fa-users"></i>
                         <span class="hide-menu">Providers</span>
                         </a>
                      </li>
+					@endif
                      <!-- <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="showing.html"
                            aria-expanded="false">

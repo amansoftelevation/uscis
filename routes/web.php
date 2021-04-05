@@ -15,23 +15,31 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@index');
 Route::post('/login','HomeController@loginPost');
-Route::get('/dashboard','HomeController@dashboard');
-Route::get('/client','HomeController@client');
-Route::get('/client-add','HomeController@clientDetail');
-Route::post('/client-add/{id}','HomeController@clientAddPost');
-Route::post('/client-add','HomeController@clientAddPost');
-Route::get('/client-detail/{id}','HomeController@clientDetail');
+
 Route::get('/admin-profile','HomeController@adminProfile');
 Route::post('/admin-profile','HomeController@adminProfilePost');
 Route::get('/search-result','HomeController@searchResult');
 Route::get('/change-password','HomeController@changePassword');
 Route::post('/change-password','HomeController@changePasswordPost');
 
-Route::get('/providers','ProviderController@index');
-Route::get('/provider-add','ProviderController@provideradd');
-Route::get('/provider-add/{id}','ProviderController@provideradd');
-Route::post('/provider-add','ProviderController@provideraddPost');
-Route::post('/provider-add/{id}','ProviderController@provideraddPost');
+Route::group(['prefix'=>'admin'], function () {
+	Route::get('/dashboard','AdminController@dashboard');
+	Route::get('/providers','AdminController@index');
+	Route::get('/provider-add','AdminController@provideradd');
+	Route::get('/provider-add/{id}','AdminController@provideradd');
+	Route::post('/provider-add','AdminController@provideraddPost');
+	Route::post('/provider-add/{id}','AdminController@provideraddPost');
+});
+
+Route::group(['prefix'=>'provider'], function () {
+	Route::get('/','ProviderController@dashboard');
+	Route::get('/dashboard','ProviderController@dashboard');
+	Route::get('/client','ProviderController@client');
+	Route::get('/client-add','ProviderController@clientDetail');
+	Route::post('/client-add/{id}','ProviderController@clientAddPost');
+	Route::post('/client-add','ProviderController@clientAddPost');
+	Route::get('/client-detail/{id}','ProviderController@clientDetail');
+});
 
 
 Route::get('/updateimage','HomeController@updateimage');

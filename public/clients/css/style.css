@@ -10910,7 +10910,9 @@ h4, .h4 {
     border-radius: 5px;
 }
 
-
+a.detail-page.user_id {
+    color: #1877f2 !important;
+}
 
 
 

@@ -12,48 +12,48 @@ use Illuminate\Support\Facades\Hash;
 
 class ProviderController extends Controller
 {
-    public function index(){
-		
+    public function dashboard(){
+		return view('dashboard');
+	}
+	
+	public function client(){
 		$users = User::where('roll_id',3)->orderBy('id','DESC')->get();
-		return view('provider.index')->with('users',$users);
+		return view('client.client')->with('users',$users);
 	}
 	
 	
-	public function provideradd($id = null){
-		$pageData['title'] = 'Provider add';
+	public function clientDetail($id = null){
 		$client = (object)array(
 				'email'=>'','phone'=>'','name'=>'','dob'=>'','origin'=>'','gender'=>'','eyes'=>'','hair'=>'',
 				'status'=>'','document'=>'','image'=>false
 			);
-		$pageData['form_action'] = 'provider-add';
+		$form_action = 'provider/client-add';
 		if($id){
 			$client = User::where('user_id',$id)->first();
-			$pageData['form_action'] = 'provider-add/'.$id;
+			$form_action = 'provider/client-add/'.$id;
 		}
-		return view('provider.provideradd')->with('client',$client)->with('pageData',$pageData);
+		return view('client.clientDetail')->with('client',$client)->with('form_action',$form_action);
 	}
 	
-	public function provideraddPost(Request $request,$id = null){
-		
+	
+	public function clientAddPost(Request $request,$id = null){
 		if($id){
 			$input = array(
 						'email'=>$request->email,'phone'=>$request->phone_number,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
-						'roll_id'=>3,'status'=>$request->status,'document'=>$request->document
+						'status'=>$request->status,'document'=>$request->document
 					);
-			$message = 'Provider update successfully';
 			User::where('user_id',$id)->update($input);
+			$message = 'Client update successfully';
 		}else{
 			$input = array(
 						'email'=>$request->email,'phone'=>$request->phone_number,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
-						'roll_id'=>3,'status'=>$request->status,'document'=>$request->document,'user_id'=>rand(111111,999999)
+						'status'=>$request->status,'document'=>$request->document,'user_id'=>rand(111111,999999)
 					);
-			$message = 'Provider add successfully';
 			User::insert($input);
+			$message = 'Client add successfully';
 		}
-		return Redirect::to('/providers')->with('success_message',$message);
+		return Redirect::to('/provider/client')->with('success_message',$message);
 	}
-	
-	
 }

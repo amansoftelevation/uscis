@@ -28,15 +28,17 @@
                                    <th scope="col">ID</th>
                                    <th scope="col">Name</th>
                                    <th scope="col">Address</th>
+                                   <th scope="col">Balance</th>
                                    <th scope="col">Status</th>
                                  </tr>
                                </thead>
                                <tbody>
 								@foreach($users as $user)
                                  <tr>
-                                   <td><a class="detail-page" href="provider-add/{{$user->user_id}}">{{$user->user_id}}</a></td>
+                                   <td><a class="detail-page user_id" href="provider-add/{{$user->user_id}}">{{$user->user_id}}</a></td>
                                    <td><a class="detail-page" href="provider-add/{{$user->user_id}}">{{$user->name}}</a></td>
-                                   <td>{{$user->origin.' '.$user->eyes}}</td>
+                                   <td>@if($user->user_detail) {{$user->user_detail->mailing_address.' '.$user->user_detail->mailing_city}} @endif</td>
+                                   <td>@if($user->user_detail) {{$user->user_detail->card_rate}} @endif</td>
                                    <td><a class="custom-status-btn closed-btn" href="provider-add/{{$user->user_id}}">{{$user->document}}</td>
                                  </tr>
 								@endforeach
