@@ -49,7 +49,7 @@ class ProviderController extends Controller
 			$input = array(
 						'email'=>$request->email,'phone'=>$request->phone_number,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
-						'status'=>$request->status,'document'=>$request->document,'user_id'=>rand(111111,999999)
+						'status'=>$request->status,'document'=>$request->document,'user_id'=>rand(111111,999999),'roll_id'=>3,'provider_id'=>Auth::user()->id
 					);
 			User::insert($input);
 			$message = 'Client add successfully';

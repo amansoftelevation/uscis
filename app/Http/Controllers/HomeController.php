@@ -54,18 +54,21 @@ class HomeController extends Controller
 	
 	public function searchResult(Request $request){
 		
-		if($request->client){
-			$admin = User::where('roll_id',2)->first();
-			$client = User::where('user_id',$request->client)->first();
-			if($client){
-				return view('searchResult')->with('client',$client)->with('admin',$admin);
+		try {
+			if($request->client){
+				$client = User::where('user_id',$request->client)->where('roll_id',3)->first();
+				$admin = User::where('id',$client->provider_id)->first();
+				if($client){
+					return view('searchResult')->with('client',$client)->with('admin',$admin);
+				}else{
+					return Redirect::to('/')->with('invaid_cient','This is invaid ID Number');
+				}
 			}else{
-				return Redirect::to('/')->with('invaid_cient','This is invaid ID Number');
+				return Redirect::to('/')->with('invaid_cient','ID Number is requred');
 			}
-		}else{
-			return Redirect::to('/')->with('invaid_cient','ID Number is requred');
-		}
-		
+		}catch(\Exception $e){
+            return Redirect::to('/')->with('invaid_cient','This is invaid ID Number');
+        }
 	}
 	
 	public function updateimage(){

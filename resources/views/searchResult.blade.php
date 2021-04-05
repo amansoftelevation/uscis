@@ -39,8 +39,10 @@
                      <div class="detail-col-user p-detail-col border-top mt-0">
                         <p>Please contact attorney on record with any immigration issues:<br>
                            <b>Law Offices of sanjay Sobti</b>
-						   {{$admin->address}}
-                        </p>
+						   @if($admin->user_detail)
+						   {{$admin->user_detail->mailing_address.' '.$admin->user_detail->mailing_city.' '.$admin->user_detail->mailing_state.' ('.$admin->user_detail->mailing_zip.')'}}
+							@endif
+						</p>
                         <button type="submit" class="text-uppercase new-search-btn" onclick="location.href='index.html'">New Search</button>
                      </div>
                   </div>
