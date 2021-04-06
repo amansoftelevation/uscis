@@ -28,7 +28,7 @@
                         <a class="nav-link" href="#">About<span>USCIS Verify</span></a>
                      </li>
                      <li class="nav-item provider-list">
-                        <a class="nav-link" href="#"><span>* * *</span>Provider</a>
+                     <a class="nav-link position-relative" href="#"><span class="star-li-icon position-absolute">* * *</span>Provider<span>Benefits</span></a>
                      </li>
                      <li class="nav-item login-btn">
                         <button type="button" id="example_login_model" class="" data-toggle="modal" data-target="#exampleModal">Login</button>
@@ -89,14 +89,14 @@
                      <li><a href="#">Home</a></li>
                      <li><a href="#">Provider Login</a></li>
                   </ul>
-                  <p class="text-white">Copyright 2017.All rights reserved.</p>
+                  <p class="copy-right-col">Copyright 2017.All rights reserved.</p>
                </div>
                <div class="col-md-6 text-right">
                   <div class="logo-white"><img src="images/logo-white.png" class="img-fluid" width="150px"> </div>
-                  <ul class="social-icon-list">
+                  <!-- <ul class="social-icon-list">
                      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul>
+                  </ul> -->
                </div>
             </div>
          </div>

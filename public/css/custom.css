@@ -346,7 +346,9 @@ button.new-search-btn:hover {
 button:focus{
 	outline: 0;
 }
-
+.form-label-group {
+    margin-bottom: 20px;
+}
 
 
 

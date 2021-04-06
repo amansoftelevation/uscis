@@ -189,7 +189,7 @@
                <nav class="sidebar-nav">
                   <ul id="sidebarnav">
                      <!-- User Profile-->
-                     <li class="sidebar-item mt-2">
+                     <li class="sidebar-item mt-3">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url(user_url('dashboard')) }}"
                            aria-expanded="false">
                         <i class="fas fa-th-large"></i>

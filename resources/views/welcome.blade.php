@@ -5,9 +5,9 @@
       <section class="banner-section">
          <div class="container">
             <div class="verify-id-number-col">
-               <p class="text-uppercase identify-p">Verify Identity & Status For</p>
+               <p class="text-uppercase identify-p mb-3">Verify Identity & Status For</p>
                <h1 class="verify-heading text-uppercase mb-4">Law Enforcement <span class="text-white">Agency.</span> Us Customs <span class="text-white">Border Protection!</span></h1>
-               <p class="text-white mb-4">If you  are US Law Enforcement Agent, enter cardholder identification number to verify status.</p>
+               <p class="identify-p mb-4 font-normal">If you  are US Law Enforcement Agent, enter cardholder identification number to verify status.</p>
                <form class="mb-5">
                   <div class="form-field-custom">
                      <input type="text" name="client" placeholder="ID Number">

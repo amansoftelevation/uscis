@@ -10913,6 +10913,27 @@ h4, .h4 {
 a.detail-page.user_id {
     color: #1877f2 !important;
 }
+.data-table-custom-table label select {
+  margin: 0 8px;
+}
+.data-table-custom-table label {
+  text-transform: capitalize;
+}
+.data-table-custom-table a.paginate_button.current {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0;
+}
+.data-table-custom-table a.paginate_button {
+  padding: 0 2px !important;
+}
+.dataTables_wrapper .dataTables_length select {
+  border-radius: 3px;
+  background-color: transparent;
+  padding: 4px;
+  height: 32px;
+  border: 1px solid #707070;
+}
 
 
 
