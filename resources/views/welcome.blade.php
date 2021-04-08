@@ -7,12 +7,16 @@
 					<h2 class="section-headline inverted"><span>VERIFY IDENTITY & STATUS for</span>LAW ENFORCEMENT <em>AGENCY</em>.<br>US CUSTOMS <em>Border Protection</em>!</h2>
 
 					<p>If you are US Law Enforcement Agent, enter cardholder identification number to verify status.</p>
-					<form action="result.html" method="GET" />
-						<div class="q-row mb-0 mb-md-5">
-							<div class="q-col-1-2"><input type="text" placeholder="ID Number" name="id"></div>
-							<div class="q-col-1-2"><button class="">Verify</button></div>
-						</div>
-					</form>
+					<form class="mb-5">
+					  <div class="form-field-custom">
+						 <input type="text" name="client" placeholder="ID Number">
+						 <button type="submit" formaction="search-result"
+						  class="custom-button text-uppercase">Verify</button>
+					  </div>
+					  @if(Session::has('invaid_cient'))
+						<p class="text-danger">{{Session::get('invaid_cient')}}</p>
+					  @endif
+				   </form>
 				</div>
 			</div>
 		</div>

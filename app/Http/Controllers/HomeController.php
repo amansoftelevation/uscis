@@ -8,6 +8,7 @@ use Redirect;
 use App\User;
 use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 
 class HomeController extends Controller
@@ -121,11 +122,29 @@ class HomeController extends Controller
 	
 	public function changePasswordPost(Request $request){
 		// $request = $request->all();
+		
+		$validations = array(
+                'old_password' => 'required',
+                'new_password' => 'required',
+                'confirm_password' => 'required',
+            );
+		$validator = Validator::make($request->all(),$validations);
+		if($validator->fails())
+		  {
+		   return redirect('change-password')->withErrors($validator)->withInput();
+		  }	
+			
+		
 		if($request->new_password == $request->confirm_password){
-			$password_sss = Hash::make($request->old_password);
+			$password_sss = Hash::make($request->new_password);
 			$userId = Auth::user();
-			User::where('id',$userId->id)->update(array('password'=>$password_sss));
-			return Redirect::to('/change-password')->with('success_message','Your password has been change successfully');
+			$user_data = User::where('id',$userId->id)->first();
+			if(Hash::check($request->old_password, $user_data->password)){
+				User::where('id',$userId->id)->update(array('password'=>$password_sss));
+				return Redirect::to('/change-password')->with('success_message','Your password has been change successfully');
+			}else{
+				return Redirect::to('/change-password')->with('error_message','Your old password does not match');
+			}
 		}else{
 			return Redirect::to('/change-password')->with('error_message','Your confirm password does not match');
 		}
