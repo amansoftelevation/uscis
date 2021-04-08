@@ -41,53 +41,61 @@
                                  <h4 class="mb-4">Contact Information</h4>
                                  <div class="form-group">
                                     <label for="InputEmail1">Email address:</label>
-                                    <input type="email" name="email" value="{{$client->email}}" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                 </div>
+                                    <input type="email" name="email" value="{{(old('email')) ? old('email') : $client->email}}" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+									<span>@if ($errors->has('email')) {{ $errors->get('email')[0] }} @endif</span>
+								 </div>
                                  <div class="form-group">
                                     <label for="InputNumber">Phone Number:</label>
-                                    <input type="number" name="phone_number" value="{{$client->phone}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter number">
-                                 </div>
+                                    <input type="number" name="phone" value="{{(old('phone')) ? old('phone') : $client->phone}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter number">
+									<span>@if ($errors->has('phone')) {{ $errors->get('phone')[0] }} @endif</span>
+								 </div>
                               </div>
                               <div class="general-info mt-5">
                                  <h4 class="mb-4">General Information</h4>
                                  <div class="form-group">
                                     <label for="InputName">Name:</label>
-                                    <input type="text" name="name" value="{{$client->name}}" class="form-control" id="InputEmail1" aria-describedby="emailName" placeholder="Enter name">
-                                 </div>
+                                    <input type="text" name="name" value="{{(old('name')) ? old('name') : $client->name}}" class="form-control" id="InputEmail1" aria-describedby="emailName" placeholder="Enter name">
+									<span>@if ($errors->has('name')) {{ $errors->get('name')[0] }} @endif</span>
+								 </div>
                                  <div class="form-group">
                                     <label for="InputNumber">DOB:</label>
-                                    <input type="date" name="dob" value="{{$client->dob}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter Date of Birth">
-                                 </div>
+                                    <input type="date" name="dob" value="{{(old('dob')) ? old('dob') : $client->dob}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter Date of Birth">
+									<span>@if ($errors->has('dob')) {{ $errors->get('dob')[0] }} @endif</span>
+								 </div>
                                  <div class="form-group">
                                     <label for="InputNumber">Origin:</label>
-                                    <input type="text" name="origin" value="{{$client->origin}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter origin">
-                                 </div>
+                                    <input type="text" name="origin" value="{{(old('origin')) ? old('origin') : $client->origin}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter origin">
+									<span>@if ($errors->has('origin')) {{ $errors->get('origin')[0] }} @endif</span>
+								 </div>
                                  <div class="form-group">
                                     <label for="InputNumber">Gender:</label>
                                     <select name="gender">
-                                       <option @if($client->gender === 'Male') ? selected : '' @endif>Male</option>
-                                       <option @if($client->gender === 'Female') ? selected : '' @endif>Female</option>
-                                       <option @if($client->gender === 'Other') ? selected : '' @endif>Other</option>
+                                       <option @if($client->gender === 'Male' || old('gender') === 'Male') ? selected : '' @endif>Male</option>
+                                       <option @if($client->gender === 'Female' || old('gender') === 'Female') ? selected : '' @endif>Female</option>
+                                       <option @if($client->gender === 'Other' || old('gender') === 'Other') ? selected : '' @endif>Other</option>
                                     </select>
                                  </div>
                                  <div class="form-group">
                                     <label for="InputNumber">Eyes:</label>
-                                    <input type="text" name="eyes" value="{{$client->eyes}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter eyes">
-                                 </div>
+                                    <input type="text" name="eyes" value="{{(old('eyes')) ? old('eyes') : $client->eyes}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter eyes">
+									<span>@if ($errors->has('eyes')) {{ $errors->get('eyes')[0] }} @endif</span>
+								 </div>
                                  <div class="form-group">
                                     <label for="InputNumber">Hair:</label>
-                                    <input type="text" name="hair" value="{{$client->hair}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter hair">
-                                 </div>
+                                    <input type="text" name="hair" value="{{(old('hair')) ? old('hair') : $client->hair}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter hair">
+									<span>@if ($errors->has('hair')) {{ $errors->get('hair')[0] }} @endif</span>
+								 </div>
                               </div>
                               <div class="general-info mt-5">
                                  <h4 class="mb-4">Application Status</h4>
                                  <div class="form-group">
                                     <label for="InputSelect">Status:</label>
                                     <select name="status">
-                                       <option @if($client->status === 'Do Not Remote From USA') ? selected : '' @endif>Do Not Remote From USA</option>
-                                       <option @if($client->status === 'Valid') ? selected : '' @endif>Valid</option>
-                                       <option @if($client->status === 'In Valid') ? selected : '' @endif>In Valid</option>
+                                       <option @if($client->status === 'Do Not Remote From USA' || old('status') === 'Do Not Remote From USA') ? selected : '' @endif value="">Do Not Remote From USA</option>
+                                       <option @if($client->status === 'Valid' || old('status') === 'Valid') ? selected : '' @endif value="Valid">Valid</option>
+                                       <option @if($client->status === 'In Valid' || old('status') === 'In Valid') ? selected : '' @endif value="In Valid">In Valid</option>
                                     </select>
+									<span>@if ($errors->has('status')) {{ $errors->get('status')[0] }} @endif</span>
                                  </div>
                               </div>
                               <div class="general-info mt-5">
@@ -95,10 +103,11 @@
                                  <div class="form-group">
                                     <label for="InputSelect">Status:</label>
                                     <select name="document">
-                                       <option @if($client->document === 'Do Not Remote From USA') ? selected : '' @endif>Do Not Remote From USA</option>
-                                       <option @if($client->document === 'Valid') ? selected : '' @endif>Valid</option>
-                                       <option @if($client->document === 'In Valid') ? selected : '' @endif>In Valid</option>
+                                       <option @if($client->document === 'Do Not Remote From USA' || old('document') === 'Do Not Remote From USA') ? selected : '' @endif value="">Do Not Remote From USA</option>
+                                       <option @if($client->document === 'Valid' || old('document') === 'Valid') ? selected : '' @endif value="Valid">Valid</option>
+                                       <option @if($client->document === 'In Valid' || old('document') === 'In Valid') ? selected : '' @endif value="In Valid">In Valid</option>
                                     </select>
+									<span>@if ($errors->has('document')) {{ $errors->get('document')[0] }} @endif</span>
                                  </div>
                               </div>
                         </div>

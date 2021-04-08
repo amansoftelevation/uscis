@@ -9,6 +9,8 @@ use App\User;
 use App\UserDetail;
 use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Hash;
+Use Illuminate\Support\Facades\Validator;
+use Mail;
 
 
 class AdminController extends Controller
@@ -19,6 +21,10 @@ class AdminController extends Controller
 		return view('provider.index')->with('users',$users);
 	}
 	
+	
+	public function dashboard(){
+		return view('dashboard');
+	}
 	
 	public function provideradd($id = null){
 		$pageData['title'] = 'Provider add';
@@ -64,6 +70,7 @@ class AdminController extends Controller
 	}
 	
 	public function provideraddPost(Request $request,$id = null){
+		
 		if($id){
 			$input = array(
 						'name'=>$request->name,'contact'=>$request->contact,'phone'=>$request->phone_no,'email'=>$request->email,'roll_id'=>1,
@@ -76,13 +83,25 @@ class AdminController extends Controller
 							'shiping_state'=>$request->shiping_state,'shiping_zip'=>$request->shiping_zip,'card_rate'=>$request->card_rate
 						);
 			UserDetail::updateOrCreate(array('user_id'=>$id),$inputDteail);
-			// where('user_id',$id)->update($inputDteail);	
 			$message = 'Provider update successfully';
 		}else{
+			$validations = array(
+                'name' => 'required',
+                'contact' => 'required',
+                'phone_no' => 'required',
+                'email' => 'required|email|unique:users',
+                'card_rate' => 'required'
+            );
+			$validator = Validator::make($request->all(),$validations);
+			if($validator->fails())
+			  {
+			   return redirect('admin/provider-add')->withErrors($validator)->withInput();
+			  }
+			  
 			$user_id = rand(111111,999999);
 			$input = array(
 						'name'=>$request->name,'contact'=>$request->contact,'phone'=>$request->phone_no,'email'=>$request->email,'roll_id'=>1,
-						'user_id'=>$user_id,'status'=>$request->status
+						'user_id'=>$user_id,'status'=>$request->status,'password'=>Hash::make($user_id)
 					);
 			$inputDteail = array(
 							'mailing_address'=>$request->mailing_address,'mailing_city'=>$request->mailing_city,'mailing_state'=>$request->mailing_state,
@@ -91,13 +110,23 @@ class AdminController extends Controller
 						);
 			$inputUser = User::insertGetId($input);
 			UserDetail::insert($inputDteail);
+			$email_s = $request->email;
+			Mail::send('emails.contact', ['name' => $request->name, 'email' => $request->email, 'password' => $user_id], function ($message) use($email_s) {
+				$message->from('beonetime1@gmail.com', 'USCIS');
+				$message->to($email_s);
+				$message->subject('Registration');
+			});
 			$message = 'Provider add successfully';
 		}
 		return Redirect::to('/admin/providers')->with('success_message',$message);
 	}
 	
-	public function dashboard(){
-		return view('dashboard');
+	
+	public function adminProfile(){
+		$users = User::with(['user_detail'])->where('id',Auth::user()->id)->orderBy('id','DESC')->first();
+		return view('adminProfile')->with('userAuth',$users);
 	}
+
+	
 	
 }

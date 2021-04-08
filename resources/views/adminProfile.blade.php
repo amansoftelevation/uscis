@@ -7,7 +7,7 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-			{{Form::open(['url'=>url('admin-profile'),'id'=>'general_form'])}}	
+			{{Form::open(['url'=>url('provider/admin-profile'),'id'=>'general_form'])}}	
             <div class="page-breadcrumb bg-white">
                <div class="row align-items-center">
                   <div class="col-md-12 d-flex justify-content-between align-items-center">
@@ -59,13 +59,6 @@
                                        <option @if($userAuth->gender === 'Female') ? selected : '' @endif>Female</option>
                                        <option @if($userAuth->gender === 'Other') ? selected : '' @endif>Other</option>
                                     </select>
-                                 </div>
-                              </div>
-                              <div class="general-info mt-5">
-                                 <h4 class="mb-4">Address Information</h4>
-                                 <div class="form-group">
-                                    <label for="InputSelect">Address:</label>
-                                    <textarea name="address" class="w-100" placeholder="Enter your address">{{$userAuth->address}}</textarea>
                                  </div>
                               </div>
                            

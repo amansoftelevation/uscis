@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Auth;
 use Redirect;
 use App\User;
+use App\UserDetail;
 use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Hash;
+Use Illuminate\Support\Facades\Validator;
 
 
 class ProviderController extends Controller
@@ -17,7 +19,7 @@ class ProviderController extends Controller
 	}
 	
 	public function client(){
-		$users = User::where('roll_id',3)->orderBy('id','DESC')->get();
+		$users = User::where('roll_id',3)->where('provider_id',Auth::user()->id)->orderBy('id','DESC')->get();
 		return view('client.client')->with('users',$users);
 	}
 	
@@ -37,9 +39,38 @@ class ProviderController extends Controller
 	
 	
 	public function clientAddPost(Request $request,$id = null){
+		
+			$validations = array(
+                'phone' => 'required',
+                'name' => 'required',
+                'dob' => 'required',
+                'origin' => 'required',
+                'eyes' => 'required',
+                'hair' => 'required',
+                'status' => 'required',
+                'document' => 'required',
+            );
+			if(!$id){
+				$validations['email'] = 'required|email|unique:users';
+				$validator = Validator::make($request->all(),$validations);
+				if($validator->fails())
+				  {
+				   return redirect('provider/client-add')->withErrors($validator)->withInput();
+				  }
+				
+			}else{
+				$validator = Validator::make($request->all(),$validations);
+				if($validator->fails())
+				  {
+				   return redirect('provider/client-detail/'.$id)->withErrors($validator)->withInput();
+				  }
+			}
+			
+			
+			  
 		if($id){
 			$input = array(
-						'email'=>$request->email,'phone'=>$request->phone_number,'name'=>$request->name,'dob'=>$request->dob,
+						'email'=>$request->email,'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
 						'status'=>$request->status,'document'=>$request->document
 					);
@@ -47,7 +78,7 @@ class ProviderController extends Controller
 			$message = 'Client update successfully';
 		}else{
 			$input = array(
-						'email'=>$request->email,'phone'=>$request->phone_number,'name'=>$request->name,'dob'=>$request->dob,
+						'email'=>$request->email,'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
 						'status'=>$request->status,'document'=>$request->document,'user_id'=>rand(111111,999999),'roll_id'=>3,'provider_id'=>Auth::user()->id
 					);
@@ -59,16 +90,13 @@ class ProviderController extends Controller
 	
 	
 	public function adminProfile(){
-		$userAuth = Auth::user();
-		return view('adminProfile')->with('userAuth',$userAuth);
+		$users = User::where('id',Auth::user()->id)->orderBy('id','DESC')->first();
+		return view('providerProfile')->with('userAuth',$users);
 	}
 	
 	public function adminProfilePost(Request $request){
-		
-		$input = $request->all();
-		unset($input['_token']);
-		User::where('id',Auth::user()->id)->update($input);
-		return Redirect::to('/admin-profile');
+		User::where('id',Auth::user()->id)->update(array('email'=>$request->email,'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,'gender'=>$request->gender));
+		return Redirect::to('/admin/profile')->with('success_message','Profile update successfully');
 		
 	}
 }

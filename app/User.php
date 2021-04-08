@@ -41,4 +41,8 @@ class User extends Authenticatable
     	return $this->hasOne('App\UserDetail', 'user_id', 'user_id');
     }
 	
+	protected $validations = [
+    'email' => 'sometimes|required|email|unique:users'
+	];
+	
 }

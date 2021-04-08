@@ -11,7 +11,9 @@ li {
 	padding: 0;
 	margin: 0;
 }
-
+a:hover {
+    text-decoration: none;
+}
 * {
 	box-sizing: border-box;
 }
@@ -99,7 +101,7 @@ form.form-signin .form-label-group {
     border-color: #fa423b;
 }
 .custom-control-label::after, .custom-control-label::before{
-	top: 0;
+	top: 4px;
 }
 .btn-google {
     color: white;
@@ -349,10 +351,38 @@ button:focus{
 .form-label-group {
     margin-bottom: 20px;
 }
-
-
-
-
-
+.form-label-group p.text-danger {
+    margin: 0;
+}
+.general-info .form-group span {
+    text-align: center;
+    color: red;
+    font-weight: normal;
+}
+.modal-header .close:hover {
+    background: transparent;
+}
+.change-pass-col-page .admin-change-pass-col {
+	max-width: 650px;
+	margin: 30px auto;
+	padding: 40px;
+	box-shadow: 0px 0px 17px #e0e0e085;
+	border-radius: 8px;
+  }
+  .change-pass-col-page .admin-change-pass-col form input {
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #949494;
+    color: #4F5467;
+}
+.change-pass-col-page .admin-change-pass-col form h3.page-title {
+    color: #131a41;
+}
+.change-pass-col-page .admin-change-pass-col form p.text-danger {
+    margin: 0;
+}
+.change-pass-col-page .row {
+    margin: 0;
+}
 
 

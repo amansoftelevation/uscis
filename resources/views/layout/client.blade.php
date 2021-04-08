@@ -166,7 +166,7 @@
                            <a class="dropdown-item" href="{{ url(user_url('profile')) }}"><i class="fas fa-user-plus"></i> Manage Account</a>
                            <a class="dropdown-item" href="{{ url('change-password') }}"><i class="fas fa-key"></i> Change Password</a>
                            <!-- <a class="dropdown-item" href="#"><i class="fas fa-sync-alt"></i> Activity Log</a> -->
-                           <a class="dropdown-item" href="{{ url('/') }}"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                           <a class="dropdown-item" href="{{ url('/log-out') }}"><i class="fas fa-sign-out-alt"></i> Log out</a>
                         </div>
                      </li>
                      <!-- ============================================================== -->
@@ -229,7 +229,7 @@
                         </a>
                      </li> -->
                      <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/') }}"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/log-out') }}"
                            aria-expanded="false">
                         <i class="fas fa-sign-out-alt"></i>
                         <span class="hide-menu">Logout</span>

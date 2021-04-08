@@ -25,6 +25,7 @@
                           <table id="myTable" class="table calender-table mt-0 mb-0 client-table ">
                                <thead class="thead-dark">
                                  <tr>
+                                   <th scope="col" style="width: 1px;"></th>
                                    <th scope="col">ID</th>
                                    <th scope="col">Name</th>
                                    <th scope="col">Address</th>
@@ -34,6 +35,7 @@
                                <tbody>
 								@foreach($users as $user)
                                  <tr>
+                                   <td></td>
                                    <td><a class="detail-page user_id" href="client-detail/{{$user->user_id}}">{{$user->user_id}}</a></td>
                                    <td><a class="detail-page" href="client-detail/{{$user->user_id}}">{{$user->name}}</a></td>
                                    <td>{{$user->origin.' '.$user->eyes}}</td>

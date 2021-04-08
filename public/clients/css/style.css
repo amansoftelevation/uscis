@@ -10769,7 +10769,15 @@ button:focus{
 }
 .general-info .form-group {
     display: flex;
-    align-items: center;
+    flex-flow: column;
+}
+.form-group.state span, .form-group.zip span {
+  color: initial !important;
+}
+.general-info .form-group span {
+  text-align: center;
+  color: red;
+  font-weight: normal;
 }
 .general-info .form-group input, .general-info .form-group select {
     height: 34px;

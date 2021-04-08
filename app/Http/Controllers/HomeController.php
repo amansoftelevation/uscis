@@ -12,14 +12,43 @@ use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
+    
     public function index(){
 		return view('welcome');
 	}
 	
+	public function adminIndex(){
+		
+		return view('adminlogin');
+		
+	}
+	
+	public function adminLoginPost(Request $request){
+		$userdata = array(
+			'email'     => $request->email,
+			'password'  => $request->password,
+			'roll_id'  => 2
+		);
+		if(Auth::attempt($userdata)) {
+			$authUser = Auth::user()->roll_id;
+			if($authUser === 1){
+				return Redirect::to('provider/dashboard');
+			}else if($authUser === 2){
+				return Redirect::to('admin/dashboard');
+			}else{
+				return Redirect::to('/');
+			}
+		} else {
+			return Redirect::to('/admin')->with('invalid_login','Invalid email or password');
+		}
+	}
+	
+	
 	public function loginPost(Request $request){
 		$userdata = array(
 			'email'     => $request->email,
-			'password'  => $request->password
+			'password'  => $request->password,
+			'roll_id'  => 1
 		);
 		if(Auth::attempt($userdata)) {
 			$authUser = Auth::user()->roll_id;
@@ -33,6 +62,12 @@ class HomeController extends Controller
 		} else {
 			return Redirect::to('/')->with('invalid_login','Invalid email or password');
 		}
+	}
+	
+	
+	public function loginOut(){
+		Auth::logout();
+		return redirect('/');
 	}
 
 	
