@@ -161,7 +161,7 @@
                      <!-- User profile and search -->
                      <!-- ============================================================== -->
                      <li class="dropdown dropdown-user nav-item">
-                        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" aria-expanded="false"></span><span class="avatar avatar-online"><img src="{{ url('clients/images/user.png') }}" alt="avatar"><i></i></span><span class="ml-3 user-name text-bold-700">Sanjay Sobti</a>
+                        <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown" aria-expanded="false"></span><span class="avatar avatar-online"><img src="{{ url('clients/images/user.png') }}" alt="avatar"><i></i></span><span class="ml-3 user-name text-bold-700">{{Auth::user()->name}}</a>
                         <div class="dropdown-menu dropdown-menu-right">
                            <a class="dropdown-item" href="{{ url(user_url('profile')) }}"><i class="fas fa-user-plus"></i> Manage Account</a>
                            <a class="dropdown-item" href="{{ url('change-password') }}"><i class="fas fa-key"></i> Change Password</a>

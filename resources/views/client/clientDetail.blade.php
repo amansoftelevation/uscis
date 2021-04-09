@@ -7,7 +7,7 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-			{{Form::open(['url'=>url($form_action),'id'=>'general_form'])}}	
+			{{Form::open(['url'=>url($form_action),'id'=>'general_form','enctype'=>'multipart/form-data'])}}	
             <div class="page-breadcrumb bg-white">
                <div class="row align-items-center">
                   <div class="col-md-12 d-flex justify-content-between align-items-center">
@@ -30,7 +30,7 @@
                               <div class="upload-button">
                                  <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                               </div>
-                              <input class="file-upload" type="file" accept="image/*"/>
+                              <input class="file-upload" name="image" type="file" />
                            </div>
                            <h4 class="text-center">Upload Picture</h4>
                         </div>

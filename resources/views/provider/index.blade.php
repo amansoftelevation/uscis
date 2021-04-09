@@ -41,7 +41,7 @@
                                    <td><a class="detail-page" href="provider-add/{{$user->user_id}}">{{$user->name}}</a></td>
                                    <td>@if($user->user_detail) {{$user->user_detail->mailing_address.' '.$user->user_detail->mailing_city}} @endif</td>
                                    <td>@if($user->user_detail) {{$user->user_detail->card_rate}} @endif</td>
-                                   <td><a class="custom-status-btn closed-btn invalid" href="provider-add/{{$user->user_id}}">{{$user->document}}</td>
+                                   <td><a class="custom-status-btn closed-btn invalid" href="provider-add/{{$user->user_id}}">{{$user->status}}</td>
                                  </tr>
 								@endforeach
                                </tbody>

@@ -74,6 +74,13 @@ class ProviderController extends Controller
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
 						'status'=>$request->status,'document'=>$request->document
 					);
+			if ($request->hasFile('image')) {
+				   $image = $request->file('image'); //get the file
+				   $namefile = 	rand(1,999999) .time() . '.' . $image->getClientOriginalExtension();
+				   $destinationPath = public_path('/assets/provider'); //public path folder dir
+				   $image->move($destinationPath, $namefile);  //mve to destination you mentioned
+				   $input['image'] = 'assets/provider/'.$namefile;
+			}
 			User::where('user_id',$id)->update($input);
 			$message = 'Client update successfully';
 		}else{
@@ -82,6 +89,13 @@ class ProviderController extends Controller
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
 						'status'=>$request->status,'document'=>$request->document,'user_id'=>rand(111111,999999),'roll_id'=>3,'provider_id'=>Auth::user()->id
 					);
+			if ($request->hasFile('image')) {
+				   $image = $request->file('image'); //get the file
+				   $namefile = 	rand(1,999999) .time() . '.' . $image->getClientOriginalExtension();
+				   $destinationPath = public_path('/assets/provider'); //public path folder dir
+				   $image->move($destinationPath, $namefile);  //mve to destination you mentioned
+				   $input['image'] = 'assets/provider/'.$namefile;
+			}
 			User::insert($input);
 			$message = 'Client add successfully';
 		}

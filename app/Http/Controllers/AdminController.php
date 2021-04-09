@@ -63,9 +63,6 @@ class AdminController extends Controller
 		
 			$pageData['form_action'] = 'admin/provider-add/'.$id;
 		}
-		// echo '<pre>';
-		// print_r($client);
-		// die;
 		return view('provider.provideradd')->with('client',$client)->with('pageData',$pageData);
 	}
 	
@@ -74,7 +71,7 @@ class AdminController extends Controller
 		if($id){
 			$input = array(
 						'name'=>$request->name,'contact'=>$request->contact,'phone'=>$request->phone_no,'email'=>$request->email,'roll_id'=>1,
-						'status'=>'1'
+						'status'=>$request->status
 					);
 			User::where('user_id',$id)->update($input);
 			$inputDteail = array(
@@ -90,7 +87,15 @@ class AdminController extends Controller
                 'contact' => 'required',
                 'phone_no' => 'required',
                 'email' => 'required|email|unique:users',
-                'card_rate' => 'required'
+                'card_rate' => 'required',
+                'mailing_address' => 'required',
+                'mailing_city' => 'required',
+                'mailing_state' => 'required',
+                'mailing_zip' => 'required',
+                'shiping_address' => 'required',
+                'shiping_city' => 'required',
+                'shiping_state' => 'required',
+                'shiping_zip' => 'required',
             );
 			$validator = Validator::make($request->all(),$validations);
 			if($validator->fails())
