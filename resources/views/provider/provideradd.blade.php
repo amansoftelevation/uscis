@@ -19,36 +19,45 @@
             <div class="client-detail-page mb-5 mt-5">
                <div class="container-detail">
 					<div class="row">
-                     <div class="col-md-7">
+                     <div class="col-md-6">
                         <div class="user-detail">
                               <div class="general-info">
                                  <div class="form-group">
                                     <div class="d-flex">
                                     <label for="InputEmail1">Company Name:</label>
-                                    <input type="name" class="form-control" name="name" value="{{ (old('name')) ? old('name') : $client->name}}" id="name" aria-describedby="nameHelp" placeholder="Law Offices of Sanjay Sobti">
+                                    <div class="w-100">
+                                       <input type="name" class="form-control" name="name" value="{{ (old('name')) ? old('name') : $client->name}}" id="name" aria-describedby="nameHelp" placeholder="Law Offices of Sanjay Sobti">
+                                       <span>@if ($errors->has('name')) {{ $errors->get('name')[0] }} @endif</span>
+                                    </div>
                                  </div>
-									<span>@if ($errors->has('name')) {{ $errors->get('name')[0] }} @endif</span>
+									
 								 </div>
                                  <div class="form-group">
                                     <div class="d-flex">
                                        <label for="InputEmail1">Contact:</label>
-                                       <input type="name" class="form-control" name="contact" value="{{ (old('contact')) ? old('contact') : $client->contact}}" id="name" aria-describedby="nameHelp" placeholder="Sanjay Sobti">
-                                    </div>
+                                       <div class="w-100">
+                                          <input type="name" class="form-control" name="contact" value="{{ (old('contact')) ? old('contact') : $client->contact}}" id="name" aria-describedby="nameHelp" placeholder="Sanjay Sobti">
                                        <span>@if ($errors->has('contact')) {{ $errors->get('contact')[0] }} @endif</span>
+                                       </div>
+                                    </div>
 								 </div>
                                  <div class="form-group">
                                  <div class="d-flex">
                                     <label for="InputNumber">Phone:</label>
-                                    <input type="number" class="form-control" name="phone_no" value="{{ (old('phone_no')) ? old('phone_no') : $client->phone}}" id="InputNumber" aria-describedby="phone Help" placeholder="Enter number">
+                                    <div class="w-100">
+                                       <input type="number" class="form-control" name="phone_no" value="{{ (old('phone_no')) ? old('phone_no') : $client->phone}}" id="InputNumber" aria-describedby="phone Help" placeholder="Enter number">
+                                       <span>@if ($errors->has('phone_no')) {{ $errors->get('phone_no')[0] }} @endif</span>
+                                    </div>
                                  </div>
-                                    <span>@if ($errors->has('phone_no')) {{ $errors->get('phone_no')[0] }} @endif</span>
 								 </div>
                                  <div class="form-group">
                                  <div class="d-flex">
                                     <label for="InputNumber">Email:</label>
-                                    <input type="email" class="form-control" name="email" value="{{ (old('email')) ? old('email') : $client->email}}" id="InputEmail" aria-describedby="Email Help" placeholder="Enter Email">
+                                    <div class="w-100">
+                                       <input type="email" class="form-control" name="email" value="{{ (old('email')) ? old('email') : $client->email}}" id="InputEmail" aria-describedby="Email Help" placeholder="Enter Email">
+                                       <span>@if ($errors->has('email')) {{ $errors->get('email')[0] }} @endif</span>
+                                    </div>
                                  </div>
-                                    <span>@if ($errors->has('email')) {{ $errors->get('email')[0] }} @endif</span>
 								</div>
                               </div>
                               <div class="general-info mt-5">
@@ -56,21 +65,29 @@
                                  <div class="form-group">
                                     <div class="d-flex">
                                     <label for="InputName">Address:</label>
-                                    <input type="text" class="form-control" name="mailing_address" value="{{$client->mailing_address}}" id="InputEmail1" aria-describedby="textName" placeholder="Enter Address">
+                                    <div class="w-100">
+                                       <input type="text" class="form-control" name="mailing_address" value="{{$client->mailing_address}}" id="InputEmail1" aria-describedby="textName" placeholder="Enter Address">
+                                    </div>
                                  </div>
                                  </div>
                                  <div class="inputs-inline">
                                        <div class="form-group city-name">
+                                       <div class="d-flex">
                                           <label for="InputName">City:</label>
                                           <input type="text" class="form-control" name="mailing_city" value="{{$client->mailing_city}}" id="InputEmail1" aria-describedby="textName" placeholder="Enter City Name">
+                                       </div>
                                        </div>  
                                        <div class="form-group state">
+                                       <div class="d-flex">
                                           <span>State:</span>
                                           <input type="text" class="form-control" name="mailing_state" value="{{$client->mailing_state}}" id="InputEmail1" aria-describedby="textName" placeholder="">
+                                       </div>
                                        </div>   
                                     <div class="form-group zip">
+                                    <div class="d-flex">
                                        <span>Zip:</span>
                                        <input type="number" class="form-control" name="mailing_zip" value="{{$client->mailing_zip}}" id="InputNumber" aria-describedby="emailHelp" placeholder="">
+                                    </div>
                                     </div>
                                  </div>
                               </div>
@@ -84,16 +101,22 @@
                                  </div>
                                  <div class="inputs-inline">
                                        <div class="form-group city-name">
+                                       <div class="d-flex">
                                           <label for="InputName">City:</label>
                                           <input type="text" class="form-control" name="shiping_city" value="{{$client->shiping_city}}" id="InputEmail1" aria-describedby="textName" placeholder="Enter City Name">
+                                       </div>
                                        </div>  
                                        <div class="form-group state">
+                                       <div class="d-flex">
                                           <span>State:</span>
                                           <input type="text" class="form-control" name="shiping_state" value="{{$client->shiping_state}}" id="InputEmail1" aria-describedby="textName" placeholder="">
+                                       </div>
                                        </div>   
                                     <div class="form-group zip">
+                                    <div class="d-flex">
                                        <span>Zip:</span>
                                        <input type="number" class="form-control" name="shiping_zip" value="{{$client->shiping_zip}}" id="InputNumber" aria-describedby="emailHelp" placeholder="">
+                                    </div>
                                     </div>
                                  </div>
                               </div>
@@ -113,9 +136,11 @@
                                  </div><div class="form-group city-name">
                                        <div class="d-flex">
                                           <label for="InputName">Card Rate:</label>
-                                          <input type="number" class="form-control" name="card_rate" value="{{$client->card_rate}}" id="InputEmail1" aria-describedby="textName" placeholder="$0000">
-                                       </div>
-                                          <span>@if ($errors->has('card_rate')) {{ $errors->get('card_rate')[0] }} @endif</span>
+                                          <div class="w-100">
+                                             <input type="number" class="form-control" name="card_rate" value="{{$client->card_rate}}" id="InputEmail1" aria-describedby="textName" placeholder="$0000">
+                                             <span>@if ($errors->has('card_rate')) {{ $errors->get('card_rate')[0] }} @endif</span>
+                                          </div>
+                                          </div>
 									  </div> 
                                  <div class="form-group">
                                  <div class="d-flex">

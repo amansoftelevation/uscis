@@ -191,6 +191,11 @@ form .form-field-custom {
 	flex-flow: row;
 }
 
+.box-join.simple-half form p.text-danger {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
 input:focus {
 	outline: 0;
 }
