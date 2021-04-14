@@ -100,13 +100,4 @@
 
 @section('script')
 
-@if(Session::has('invalid_login'))
-<script>
-		$(document).ready( function () {
-			$('#example_login_model').click();
-			// alert('wwwwwwww');
-		});
-	  </script>
-@endif
-
 @endsection

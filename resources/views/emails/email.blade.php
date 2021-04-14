@@ -173,10 +173,11 @@
                                             </div>
                                             <div style="color:#555555;font-family:Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;line-height:1.5;padding-top:10px;padding-right:40px;padding-bottom:10px;padding-left:40px;">
                                                 <div style="line-height: 1.5; font-size: 12px; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; color: #555555; mso-line-height-alt: 18px;">
-                                                    <p style="text-align: center; line-height: 1.5; word-break: break-word; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 16px; mso-line-height-alt: 24px; margin: 0;"><span style="font-size: 16px; color: #3c3c3c;">Your E-Mail is {{ $email }}</span></p>
-                                                    <p style="text-align: center; line-height: 1.5; word-break: break-word; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 16px; mso-line-height-alt: 24px; margin: 0;"><span style="font-size: 16px; color: #3c3c3c;">Password: {{ $password }}</span></p>
+                                                    <p style="text-align: center; line-height: 1.5; word-break: break-word; font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 16px; mso-line-height-alt: 24px; margin: 0;"><span style="font-size: 16px; color: #3c3c3c;">A request has been received to change the password for your account</span></p>
                                                 </div>
-                                                
+                                                <div style="width: 100%; text-align: center;">
+                                                <a href="{{$with_url}}" target="_blank" style="font-size: 18px;font-family: Helvetica, Arial, sans-serif;color: #ffffff;text-decoration: none;padding: 8px 25px;margin: 35px 0px;display: inline-block;background: #fa423b;border: #fa423b;box-shadow: none;border-radius: 5px;">Reset Password</a>
+                                            </div>
                                             </div>
                                             
                                             

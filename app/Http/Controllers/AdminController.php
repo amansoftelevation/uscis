@@ -117,7 +117,7 @@ class AdminController extends Controller
 			UserDetail::insert($inputDteail);
 			$email_s = $request->email;
 			Mail::send('emails.contact', ['name' => $request->name, 'email' => $request->email, 'password' => $user_id], function ($message) use($email_s) {
-				$message->from('beonetime1@gmail.com', 'USCIS');
+				$message->from('uscisdev@gmail.com', 'USCIS');
 				$message->to($email_s);
 				$message->subject('Registration');
 			});

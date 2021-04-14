@@ -16,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','HomeController@index');
 Route::post('/login','HomeController@loginPost');
 Route::post('/admin-login','HomeController@adminLoginPost');
+Route::post('/forget-password','HomeController@forgetPassword');
 Route::get('/log-out','HomeController@loginOut');
 
 Route::get('/search-result','HomeController@searchResult');
 Route::get('/change-password','HomeController@changePassword');
 Route::post('/change-password','HomeController@changePasswordPost');
+Route::get('/reset-password/{id}','HomeController@resetPasswordPost');
+Route::post('/reset-password/{id}','HomeController@resetPasswordPost');
 Route::get('/admin','HomeController@adminIndex');
 
 Route::group(['prefix'=>'admin'], function () {
