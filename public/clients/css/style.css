@@ -10762,6 +10762,19 @@ button.custom-btn-col {
         font-weight: bold;
     font-size: 16px;
 }
+.cstm-call a.custom-btn-col {
+  color: #000;
+  border: 1px solid #131a41;
+  border-radius: 5px;
+  width: 105px;
+  height: 38px;
+  display: inline-flex;
+  font-weight: bold;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
 .form-control {
     height: 44px;
     border-radius: 5px;

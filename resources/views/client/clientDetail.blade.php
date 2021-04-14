@@ -12,7 +12,10 @@
                <div class="row align-items-center">
                   <div class="col-md-12 d-flex justify-content-between align-items-center">
                      <h3 class="page-title font-bold">Client Information</h3>
-                     <button class="custom-btn-col">Save</button>
+                     <div class="cstm-call">
+                        <a href="{{ url('provider/client') }}" class="custom-btn-col">Cencel</a>
+                        <button class="custom-btn-col">Save</button>
+                     </div>
                   </div>
                </div>
             </div>
@@ -25,7 +28,7 @@
 							<?php if($client->image){ ?>
 								<img class="profile-pic" src="{{ url($client->image) }}" />
 							<?php }else{ ?>
-								<img class="profile-pic" src="{{ url('images/id-img.png') }}" />
+								<img class="profile-pic" src="{{ url('images/id-img.jpg') }}" />
 							<?php } ?>
                               <div class="upload-button">
                                  <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
@@ -96,18 +99,6 @@
                                        <option @if($client->status === 'In Valid' || old('status') === 'In Valid') ? selected : '' @endif value="In Valid">In Valid</option>
                                     </select>
 									<span>@if ($errors->has('status')) {{ $errors->get('status')[0] }} @endif</span>
-                                 </div>
-                              </div>
-                              <div class="general-info mt-5">
-                                 <h4 class="mb-4">Additional Document</h4>
-                                 <div class="form-group">
-                                    <label for="InputSelect">Status:</label>
-                                    <select name="document">
-                                       <option @if($client->document === 'Do Not Remote From USA' || old('document') === 'Do Not Remote From USA') ? selected : '' @endif value="">Do Not Remote From USA</option>
-                                       <option @if($client->document === 'Valid' || old('document') === 'Valid') ? selected : '' @endif value="Valid">Valid</option>
-                                       <option @if($client->document === 'In Valid' || old('document') === 'In Valid') ? selected : '' @endif value="In Valid">In Valid</option>
-                                    </select>
-									<span>@if ($errors->has('document')) {{ $errors->get('document')[0] }} @endif</span>
                                  </div>
                               </div>
                         </div>

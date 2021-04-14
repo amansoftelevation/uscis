@@ -27,7 +27,7 @@ class ProviderController extends Controller
 	public function clientDetail($id = null){
 		$client = (object)array(
 				'email'=>'','phone'=>'','name'=>'','dob'=>'','origin'=>'','gender'=>'','eyes'=>'','hair'=>'',
-				'status'=>'','document'=>'','image'=>false
+				'status'=>'','image'=>false
 			);
 		$form_action = 'provider/client-add';
 		if($id){
@@ -48,7 +48,6 @@ class ProviderController extends Controller
                 'eyes' => 'required',
                 'hair' => 'required',
                 'status' => 'required',
-                'document' => 'required',
             );
 			if(!$id){
 				$validations['email'] = 'required|email|unique:users';
@@ -72,7 +71,7 @@ class ProviderController extends Controller
 			$input = array(
 						'email'=>$request->email,'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
-						'status'=>$request->status,'document'=>$request->document
+						'status'=>$request->status
 					);
 			if ($request->hasFile('image')) {
 				   $image = $request->file('image'); //get the file
@@ -87,7 +86,7 @@ class ProviderController extends Controller
 			$input = array(
 						'email'=>$request->email,'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
-						'status'=>$request->status,'document'=>$request->document,'user_id'=>rand(111111,999999),'roll_id'=>3,'provider_id'=>Auth::user()->id
+						'status'=>$request->status,'user_id'=>rand(111111,999999),'roll_id'=>3,'provider_id'=>Auth::user()->id
 					);
 			if ($request->hasFile('image')) {
 				   $image = $request->file('image'); //get the file

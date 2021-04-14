@@ -19,7 +19,7 @@
 					@if($client->image)
 						<img src="{{$client->image}}" align="user-image">
 					@else
-						<img src="images/id-img.png" align="user-image">
+						<img src="images/id-img.jpg" align="user-image">
 					@endif
                   </div>
                </div>
