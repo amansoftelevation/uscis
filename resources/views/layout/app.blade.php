@@ -30,7 +30,7 @@
    <header id="header">
 			<div class="q-container">
 				<div id="logo">
-					<a href="index.php"><img src="assets/img/logo.png" alt=""></a>
+					<a href="{{ url('/') }}"><img src="{{ url('assets/img/logo.png') }}" alt=""></a>
 				</div>
 
 				<nav id="nav">
