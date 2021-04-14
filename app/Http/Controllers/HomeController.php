@@ -68,7 +68,8 @@ class HomeController extends Controller
 		$userdata = array(
 			'email'     => $request->email,
 			'password'  => $request->password,
-			'roll_id'  => 1
+			'roll_id'  => 1,
+			'status'  => 'Active'
 		);
 		if(Auth::attempt($userdata)) {
 			$authUser = Auth::user()->roll_id;

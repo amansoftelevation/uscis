@@ -13,8 +13,8 @@
                   <div class="col-md-12 d-flex justify-content-between align-items-center">
                      <h3 class="page-title font-bold">Client Information</h3>
                      <div class="cstm-call">
-                        <a href="{{ url('provider/client') }}" class="custom-btn-col">Cencel</a>
                         <button class="custom-btn-col">Save</button>
+						<a href="{{ url('provider/client') }}" class="custom-btn-col">Cancel</a>
                      </div>
                   </div>
                </div>
