@@ -40,25 +40,17 @@
                      </div>
                      <div class="col-md-8">
                         <div class="user-detail">
-                              <div class="general-info">
-                                 <h4 class="mb-4">Contact Information</h4>
-                                 <div class="form-group">
-                                    <label for="InputEmail1">Email address:</label>
-                                    <input type="email" name="email" value="{{(old('email')) ? old('email') : $client->email}}" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-									<span>@if ($errors->has('email')) {{ $errors->get('email')[0] }} @endif</span>
-								 </div>
-                                 <div class="form-group">
-                                    <label for="InputNumber">Phone Number:</label>
-                                    <input type="number" name="phone" value="{{(old('phone')) ? old('phone') : $client->phone}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter number">
-									<span>@if ($errors->has('phone')) {{ $errors->get('phone')[0] }} @endif</span>
-								 </div>
-                              </div>
                               <div class="general-info mt-5">
                                  <h4 class="mb-4">General Information</h4>
                                  <div class="form-group">
                                     <label for="InputName">Name:</label>
                                     <input type="text" name="name" value="{{(old('name')) ? old('name') : $client->name}}" class="form-control" id="InputEmail1" aria-describedby="emailName" placeholder="Enter name">
 									<span>@if ($errors->has('name')) {{ $errors->get('name')[0] }} @endif</span>
+								 </div>
+								 <div class="form-group">
+                                    <label for="InputNumber">Phone Number:</label>
+                                    <input type="number" name="phone" value="{{(old('phone')) ? old('phone') : $client->phone}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter number">
+									<span>@if ($errors->has('phone')) {{ $errors->get('phone')[0] }} @endif</span>
 								 </div>
                                  <div class="form-group">
                                     <label for="InputNumber">DOB:</label>
@@ -80,12 +72,39 @@
                                  </div>
                                  <div class="form-group">
                                     <label for="InputNumber">Eyes:</label>
-                                    <input type="text" name="eyes" value="{{(old('eyes')) ? old('eyes') : $client->eyes}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter eyes">
+									<select name="eyes">
+                                       <option @if($client->eyes === 'Black' || old('eyes') === 'Black') ? selected : '' @endif>Black</option>
+                                       <option @if($client->eyes === 'Blue' || old('eyes') === 'Blue') ? selected : '' @endif>Blue</option>
+                                       <option @if($client->eyes === 'Brown' || old('eyes') === 'Brown') ? selected : '' @endif>Brown</option>
+                                       <option @if($client->eyes === 'Gray' || old('eyes') === 'Gray') ? selected : '' @endif>Gray</option>
+                                       <option @if($client->eyes === 'Green' || old('eyes') === 'Green') ? selected : '' @endif>Green</option>
+                                       <option @if($client->eyes === 'Hazel' || old('eyes') === 'Hazel') ? selected : '' @endif>Hazel</option>
+                                       <option @if($client->eyes === 'Maroon' || old('eyes') === 'Maroon') ? selected : '' @endif>Maroon</option>
+                                       <option @if($client->eyes === 'Multicolored' || old('eyes') === 'Multicolored') ? selected : '' @endif>Multicolored</option>
+                                       <option @if($client->eyes === 'Pink' || old('eyes') === 'Pink') ? selected : '' @endif>Pink</option>
+                                       <option @if($client->eyes === 'Unknown' || old('eyes') === 'Unknown') ? selected : '' @endif>Unknown</option>
+                                    </select>
 									<span>@if ($errors->has('eyes')) {{ $errors->get('eyes')[0] }} @endif</span>
 								 </div>
                                  <div class="form-group">
                                     <label for="InputNumber">Hair:</label>
-                                    <input type="text" name="hair" value="{{(old('hair')) ? old('hair') : $client->hair}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter hair">
+									
+									<select name="hair">
+                                       <option @if($client->hair === 'Bald' || old('hair') === 'Bald') ? selected : '' @endif>Bald</option>
+                                       <option @if($client->hair === 'Black' || old('hair') === 'Black') ? selected : '' @endif>Black</option>
+                                       <option @if($client->hair === 'Blond or Strawberry' || old('hair') === 'Blond or Strawberry') ? selected : '' @endif>Blond or Strawberry</option>
+									   <option @if($client->hair === 'Blue' || old('hair') === 'Blue') ? selected : '' @endif>Blue</option>
+									   <option @if($client->hair === 'Brown' || old('hair') === 'Brown') ? selected : '' @endif>Brown</option>
+									   <option @if($client->hair === 'Gray or Partially' || old('hair') === 'Gray or Partially') ? selected : '' @endif>Gray or Partially</option>
+									   <option @if($client->hair === 'Green' || old('hair') === 'Green') ? selected : '' @endif>Green</option>
+									   <option @if($client->hair === 'Orange' || old('hair') === 'Orange') ? selected : '' @endif>Orange</option>
+									   <option @if($client->hair === 'Pink' || old('hair') === 'Pink') ? selected : '' @endif>Pink</option>
+									   <option @if($client->hair === 'Purple' || old('hair') === 'Purple') ? selected : '' @endif>Purple</option>
+									   <option @if($client->hair === 'Red or Auburn' || old('hair') === 'Red or Auburn') ? selected : '' @endif>Red or Auburn</option>
+									   <option @if($client->hair === 'Sandy' || old('hair') === 'Sandy') ? selected : '' @endif>Sandy</option>
+									   <option @if($client->hair === 'Unknown' || old('hair') === 'Unknown') ? selected : '' @endif>Unknown</option>
+									   <option @if($client->hair === 'White' || old('hair') === 'White') ? selected : '' @endif>White</option>
+									</select>
 									<span>@if ($errors->has('hair')) {{ $errors->get('hair')[0] }} @endif</span>
 								 </div>
                               </div>

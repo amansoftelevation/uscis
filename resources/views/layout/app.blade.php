@@ -36,7 +36,7 @@
 				<nav id="nav">
 					<a href="#" id="nav-toggle" title="Navigation"><i class="fa fa-bars"></i></a>
 					<ul>
-						<li><a href="index.html">Home <span>Welcome</span></a></li>
+						<li><a href="{{ url('/') }}">Home <span>Welcome</span></a></li>
 						<li><a href="#">About <span>USCIS Verify</span></a></li>
                   <li><a href="#">Contact <span>Get In Touch</span></a></li>
 						<li class="nav-special nav-reverse">

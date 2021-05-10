@@ -50,7 +50,7 @@ class ProviderController extends Controller
                 'status' => 'required',
             );
 			if(!$id){
-				$validations['email'] = 'required|email|unique:users';
+				// $validations['email'] = 'required|email|unique:users';
 				$validator = Validator::make($request->all(),$validations);
 				if($validator->fails())
 				  {
@@ -69,7 +69,7 @@ class ProviderController extends Controller
 			  
 		if($id){
 			$input = array(
-						'email'=>$request->email,'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
+						'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
 						'status'=>$request->status
 					);
@@ -84,7 +84,7 @@ class ProviderController extends Controller
 			$message = 'Client update successfully';
 		}else{
 			$input = array(
-						'email'=>$request->email,'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
+						'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
 						'status'=>$request->status,'user_id'=>rand(111111,999999),'roll_id'=>3,'provider_id'=>Auth::user()->id
 					);

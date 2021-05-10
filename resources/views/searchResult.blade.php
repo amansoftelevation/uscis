@@ -26,8 +26,8 @@
                <div class="col-md-8">
                   <div class="detail-section">
                      <p class="text-gray-custom text-uppercase">Status</p>
-                     @if($client->status === 'Valid')<button class="text-uppercase detail-btn-cstm">Do Not Remote From USA</button>@endif
-                     <p>the cardholder has a <b>VALID</b> application currently being processed by USCIS</p>
+                     @if($client->status === 'Valid')<button class="text-uppercase detail-btn-cstm">Do Not Remove From USA</button>@endif
+                     <p>The cardholder has a <b>VALID</b> application currently being processed by USCIS</p>
                      <div class="detail-col-user border-top">
                         <p><span>Name:</span> {{$client->name}}</p>
                         <p><span>DOB:</span> {{$client->dob}}</p>
@@ -37,8 +37,7 @@
                         <p><span>Hair:</span> {{$client->hair}}</p>
                      </div>
                      <div class="detail-col-user p-detail-col border-top mt-0">
-                        <p>Please contact attorney on record with any immigration issues:<br>
-                           <b>Law Offices of sanjay Sobti</b>
+                           <b>{{$admin->name}}</b><br>
 						   @if($admin->user_detail)
 						   {{$admin->user_detail->mailing_address.' '.$admin->user_detail->mailing_city.' '.$admin->user_detail->mailing_state.' ('.$admin->user_detail->mailing_zip.')'}}
 							@endif

@@ -153,7 +153,7 @@
                                        <div class="d-flex">
                                           <label for="InputName">Card Rate:</label>
                                           <div class="w-100">
-                                             <input type="number" class="form-control" name="card_rate" value="{{(old('card_rate')) ? old('card_rate') : $client->card_rate}}" id="InputEmail1" aria-describedby="textName" placeholder="$0000">
+                                             <input type="number" class="form-control" name="card_rate" value="{{(old('card_rate')) ? old('card_rate') : $client->card_rate}}" id="InputEmail1" aria-describedby="textName" step="0.01" placeholder="$0000">
                                              <span>@if ($errors->has('card_rate')) {{ $errors->get('card_rate')[0] }} @endif</span>
                                           </div>
                                           </div>

@@ -39,7 +39,7 @@
                                    <td><a class="detail-page user_id" href="client-detail/{{$user->user_id}}">{{$user->user_id}}</a></td>
                                    <td><a class="detail-page" href="client-detail/{{$user->user_id}}">{{$user->name}}</a></td>
                                    <td>{{$user->origin.' '.$user->eyes}}</td>
-                                   <td><a class="custom-status-btn closed-btn" href="client-detail/{{$user->user_id}}">{{$user->document}}</td>
+                                   <td><a class="custom-status-btn closed-btn" href="client-detail/{{$user->user_id}}">{{$user->status}}</td>
                                  </tr>
 								@endforeach
                                </tbody>

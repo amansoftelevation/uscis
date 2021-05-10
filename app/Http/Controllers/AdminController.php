@@ -18,6 +18,10 @@ class AdminController extends Controller
     public function index(){
 		
 		$users = User::with(['user_detail'])->where('roll_id',1)->orderBy('id','DESC')->get();
+		// echo '<pre>';
+		// print_r($users->toArray());
+		// print_r(user_card_rate());
+		// die;
 		return view('provider.index')->with('users',$users);
 	}
 	
