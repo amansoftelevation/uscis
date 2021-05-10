@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Redirect;
 use App\User;
+use App\Traits\ResponseTrait;
 use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -15,7 +16,8 @@ use Mail;
 
 class HomeController extends Controller
 {
-    
+    use ResponseTrait;
+	
     public function index(){
 		return view('welcome');
 	}
@@ -65,6 +67,8 @@ class HomeController extends Controller
 	
 	
 	public function loginPost(Request $request){
+		
+		// return $this->getErrorResponse('Invalid email or password');
 		$userdata = array(
 			'email'     => $request->email,
 			'password'  => $request->password,
@@ -74,14 +78,26 @@ class HomeController extends Controller
 		if(Auth::attempt($userdata)) {
 			$authUser = Auth::user()->roll_id;
 			if($authUser === 1){
-				return Redirect::to('provider/dashboard');
+				$response['url'] = url('provider/dashboard');
+				$response['message'] = 'provider login successfully';
+				$response['delayTime'] = 5000;
+				return $this->getSuccessResponse($response);
+				// return Redirect::to('provider/dashboard');
 			}else if($authUser === 2){
-				return Redirect::to('admin/dashboard');
+				$response['url'] = url('provider/dashboard');
+				$response['message'] = 'admin login successfully';
+				$response['delayTime'] = 5000;
+				return $this->getSuccessResponse($response);
+				// return Redirect::to('admin/dashboard');
 			}else{
-				return Redirect::to('/');
+				$response['url'] = url('/');
+				$response['message'] = 'admin login successfully';
+				$response['delayTime'] = 5000;
+				return $this->getSuccessResponse($response);
+				// return Redirect::to('/');
 			}
 		} else {
-			return Redirect::to('/')->with('invalid_login','Invalid email or password');
+			return $this->getErrorResponse('Invalid email or password');
 		}
 	}
 	

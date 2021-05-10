@@ -66,11 +66,7 @@
 						<div class="form-label-group">
 							<label for="inputEmail">Email address</label>
 							<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
-							@if(Session::has('invalid_login'))
-								<p class="text-danger">{{ Session::get('invalid_login') }}</p>
-							@endif
-											</div>
-
+						</div>
 						<div class="form-label-group">
 							<label for="inputPassword">Password</label>
 							<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
@@ -163,7 +159,9 @@
       <script src="{{ url('clients/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
       <script src="{{ url('clients/js/pages/dashboards/dashboard1.js') }}"></script>
       <script src="http://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-	  <script src="https://beontime.io/js/jquery.toast.js"></script>
+	  <script src="{{ url('clients/js/form-validate.js') }}"></script>
+	  <script src="{{ url('clients/js/jquery.validate.js') }}"></script>
+	  <script src="{{ url('clients/js/jquery.toast.js') }}"></script>
 	  
 	@if(Session::has('success_message'))
 	 <script>
