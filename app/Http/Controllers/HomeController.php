@@ -107,13 +107,30 @@ class HomeController extends Controller
 		return redirect('/');
 	}
 
-	
+	public function does_url_exists($url) {
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_NOBODY, true);
+		curl_exec($ch);
+		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+		if ($code == 200) {
+			$status = true;
+		} else {
+			$status = false;
+		}
+		curl_close($ch);
+		return $status;
+	}
 	
 	public function searchResult(Request $request){
-		
+			
 		try {
 			if($request->client){
 				$client = User::where('user_id',$request->client)->where('roll_id',3)->first();
+				$image_name = 'https://softelevation.com/camip/images/'.$request->client.'.png';
+				if($this->does_url_exists($image_name)){
+					$client->image = $image_name;
+				}
 				$admin = User::where('id',$client->provider_id)->first();
 				if($client){
 					return view('searchResult')->with('client',$client)->with('admin',$admin);
