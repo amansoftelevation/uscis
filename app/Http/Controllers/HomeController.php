@@ -185,16 +185,20 @@ class HomeController extends Controller
 		header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Authorization, Origin');
 		header('Access-Control-Allow-Methods:  GET, POST, PUT, DELETE, OPTIONS');
 		$request = $request->all();
-		$image = $request['href'];
-		$imageInfo = explode(";base64,", $image);     
-		$image = str_replace(' ', '+', $imageInfo[1]);
-		$file = base64_decode($image);
-        $folderName = 'public/clients/';
-        $safeName = time().'.png';
-        $success = file_put_contents(public_path().'/clients/'.$safeName, $file);
-		$safeName_image = 'clients/'.$safeName;
-		User::where('user_id',$request['user_id'])->update(array('image'=>$safeName_image));
-		return response()->json(['status' => 1], 200);
+		if($request->href && $request->user_id){
+			$image = $request['href'];
+			$imageInfo = explode(";base64,", $image);     
+			$image = str_replace(' ', '+', $imageInfo[1]);
+			$file = base64_decode($image);
+			$folderName = 'public/clients/';
+			$safeName = time().'.png';
+			$success = file_put_contents(public_path().'/clients/'.$safeName, $file);
+			$safeName_image = 'clients/'.$safeName;
+			User::where('user_id',$request['user_id'])->update(array('image'=>$safeName_image));
+			return response()->json(['status' => 1], 200);
+		}else{
+			return response()->json(['status' => 0], 200);
+		}
 	}
 	
 	public function changePassword(){
