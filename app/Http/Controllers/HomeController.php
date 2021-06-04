@@ -185,7 +185,7 @@ class HomeController extends Controller
 		header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Authorization, Origin');
 		header('Access-Control-Allow-Methods:  GET, POST, PUT, DELETE, OPTIONS');
 		$request = $request->all();
-		if($request->href && $request->user_id){
+		if(isset($request->href) && isset($request->user_id)){
 			$image = $request['href'];
 			$imageInfo = explode(";base64,", $image);     
 			$image = str_replace(' ', '+', $imageInfo[1]);
