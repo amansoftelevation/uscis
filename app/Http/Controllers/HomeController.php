@@ -205,6 +205,12 @@ class HomeController extends Controller
 		return view('changePassword');
 	}
 	
+	public function checkVersion(){
+		echo phpinfo();
+		die();
+		// return view('changePassword');
+	}
+	
 	public function webOpen(Request $request){
 		if($request->user_id){
 			$user_id = $request->user_id;
