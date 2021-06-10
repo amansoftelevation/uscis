@@ -10,6 +10,7 @@ use App\UserDetail;
 use Twilio\Rest\Client;
 use Illuminate\Support\Facades\Hash;
 Use Illuminate\Support\Facades\Validator;
+// use App\Helpers\PlivoSms;
 
 
 class ProviderController extends Controller
@@ -25,6 +26,11 @@ class ProviderController extends Controller
 	
 	
 	public function clientDetail($id = null){
+		
+		// PlivoSms::sendSms(['phoneNumber' => '+916239463839', 'msg' => 'wwwwwwwwwwww']);
+		
+		// print_r('asdasdad');
+		// die;
 		$client = (object)array(
 				'email'=>'','phone'=>'','name'=>'','dob'=>'','origin'=>'','gender'=>'','eyes'=>'','hair'=>'',
 				'status'=>'','image'=>false

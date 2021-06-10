@@ -66,6 +66,28 @@ class HomeController extends Controller
 	}
 	
 	
+	public function twilioSand(){
+		try {
+			$account_sid = "SKd046b216db3592fd987c14a7ea8a1f66";
+			$auth_token = "mipwys9ZRvqoQDXTknKvPyFxqq45EYL7";
+			$twilio_number = "+13233700709";
+			$message = "wwwwwwwdsd";
+			$client = new Client($account_sid, $auth_token);
+			
+			$client->messages->create('+13233700709', [
+					'from' => $twilio_number, 
+					'body' => $message]);
+					
+			die('wwwwwwwwwwww');
+		} catch (Exception $e) {
+			die('wwwwwwaaaaaaaaaa');
+            // dd("Error: ". $e->getMessage());
+        }
+		// return view('adminlogin');
+		
+	}
+	
+	
 	public function loginPost(Request $request){
 		
 		// return $this->getErrorResponse('Invalid email or password');

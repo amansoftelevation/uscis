@@ -26,6 +26,7 @@ Route::post('/change-password','HomeController@changePasswordPost');
 Route::get('/reset-password/{id}','HomeController@resetPasswordPost');
 Route::post('/reset-password/{id}','HomeController@resetPasswordPost');
 Route::get('/admin','HomeController@adminIndex');
+Route::get('/twilio-sand','HomeController@twilioSand');
 
 Route::group(['prefix'=>'admin'], function () {
 	Route::group(['middleware'=>['auth','roles']], function () {

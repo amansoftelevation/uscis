@@ -2,6 +2,26 @@
 
 @section('content')
 
+		<div id="confimation_model" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title">Confirmation</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<p>Do you want sand to link .?</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-primary yes">Yes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
 
          <div class="page-wrapper">
             <!-- ============================================================== -->
@@ -36,6 +56,7 @@
                               <input class="file-upload" name="image" type="file" />
                            </div>
                            <h4 class="text-center">Upload Picture</h4>
+                           <h4 class="text-center"><input type="button" class="btn btn-info" value="Send link"></input></h4>
                         </div>
                      </div>
                      <div class="col-md-8">
@@ -142,4 +163,25 @@
          </div>
         
 
+@endsection
+
+@section('script')
+<script>
+// <input type="button" class="btn btn-info" value="Send link"></input>
+// <button type="button" class="btn btn-primary yes">Yes</button>
+// <button type="button" class="btn btn-primary yes">Yes</button>
+	$(document).ready( function () {
+		$('input[class="btn btn-info"]').click(function(){
+			$('#confimation_model').modal('show');
+		});
+		
+		
+		$('button[class="btn btn-primary yes"]').click(function(){
+			let phone_no = $('input[name="phone"]').val();
+			// 6239463839
+			// alert(phone_no);
+			// $('#confimation_model').modal('show');
+		});
+	});
+</script>
 @endsection
