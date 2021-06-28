@@ -12,11 +12,11 @@
 				</button>
 			  </div>
 			  <div class="modal-body">
-				<p>Do you want sand to link .?</p>
+				<p id="modal-body-message"></p>
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-primary yes">Yes</button>
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 			  </div>
 			</div>
 		  </div>
@@ -172,15 +172,38 @@
 // <button type="button" class="btn btn-primary yes">Yes</button>
 	$(document).ready( function () {
 		$('input[class="btn btn-info"]').click(function(){
-			$('#confimation_model').modal('show');
+			let phone_no = $('input[name="phone"]').val()
+			if(phone_no){
+				$('#confimation_model').modal('show');
+				$('#modal-body-message').html(`Do you want send link on ${phone_no} .?`);
+			}else{
+				$.toast({
+					  heading             : 'Error',
+					  text                : "No phone no found!",
+					  loader              : true,
+					  loaderBg            : '#fff',
+					  showHideTransition  : 'fade',
+					  icon                : 'error',
+					  hideAfter           : 3000,
+					  position            : 'top-right'
+				});
+			}
 		});
 		
 		
 		$('button[class="btn btn-primary yes"]').click(function(){
 			let phone_no = $('input[name="phone"]').val();
-			// 6239463839
-			// alert(phone_no);
-			// $('#confimation_model').modal('show');
+			$.toast({
+					  heading             : 'Success',
+					  text                : "We have sent a link on your phone number please check!",
+					  loader              : true,
+					  loaderBg            : '#fff',
+					  showHideTransition  : 'fade',
+					  icon                : 'success',
+					  hideAfter           : 3000,
+					  position            : 'top-right'
+				});
+			$('#confimation_model').modal('hide');
 		});
 	});
 </script>
