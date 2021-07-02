@@ -70,8 +70,9 @@
 								 </div>
 								 <div class="form-group">
                                     <label for="InputNumber">Phone Number:</label>
-                                    <input type="number" name="phone" value="{{(old('phone')) ? old('phone') : $client->phone}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter number">
+                                    <input type="text" name="phone" value="{{(old('phone')) ? old('phone') : $client->phone}}" class="form-control" id="InputNumber" aria-describedby="emailHelp" placeholder="Enter number">
 									<span>@if ($errors->has('phone')) {{ $errors->get('phone')[0] }} @endif</span>
+									<input type="hidden" name="send_sms" value="false">
 								 </div>
                                  <div class="form-group">
                                     <label for="InputNumber">DOB:</label>
@@ -167,15 +168,26 @@
 
 @section('script')
 <script>
-// <input type="button" class="btn btn-info" value="Send link"></input>
-// <button type="button" class="btn btn-primary yes">Yes</button>
-// <button type="button" class="btn btn-primary yes">Yes</button>
+
 	$(document).ready( function () {
 		$('input[class="btn btn-info"]').click(function(){
 			let phone_no = $('input[name="phone"]').val()
 			if(phone_no){
-				$('#confimation_model').modal('show');
-				$('#modal-body-message').html(`Do you want send link on ${phone_no} .?`);
+				if(phone_no.includes("+")){
+					$('#confimation_model').modal('show');
+					$('#modal-body-message').html(`Do you want send link on ${phone_no} .?`);
+				}else{
+					$.toast({
+						  heading             : 'Error',
+						  text                : "Please add country code",
+						  loader              : true,
+						  loaderBg            : '#fff',
+						  showHideTransition  : 'fade',
+						  icon                : 'error',
+						  hideAfter           : 3000,
+						  position            : 'top-right'
+					});
+				}
 			}else{
 				$.toast({
 					  heading             : 'Error',
@@ -193,16 +205,7 @@
 		
 		$('button[class="btn btn-primary yes"]').click(function(){
 			let phone_no = $('input[name="phone"]').val();
-			$.toast({
-					  heading             : 'Success',
-					  text                : "We have sent a link on your phone number please check!",
-					  loader              : true,
-					  loaderBg            : '#fff',
-					  showHideTransition  : 'fade',
-					  icon                : 'success',
-					  hideAfter           : 3000,
-					  position            : 'top-right'
-				});
+			$('input[name="send_sms"]').val(true);
 			$('#confimation_model').modal('hide');
 		});
 	});

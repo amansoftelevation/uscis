@@ -66,9 +66,6 @@ class ProviderController extends Controller
 				   return redirect('provider/client-detail/'.$id)->withErrors($validator)->withInput();
 				  }
 			}
-			
-			
-			  
 		if($id){
 			$input = array(
 						'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
@@ -85,10 +82,11 @@ class ProviderController extends Controller
 			User::where('user_id',$id)->update($input);
 			$message = 'Client update successfully';
 		}else{
+			$user_id_user_id = rand(111111,999999);
 			$input = array(
 						'phone'=>$request->phone,'name'=>$request->name,'dob'=>$request->dob,
 						'origin'=>$request->origin,'gender'=>$request->gender,'eyes'=>$request->eyes,'hair'=>$request->hair,
-						'status'=>$request->status,'user_id'=>rand(111111,999999),'roll_id'=>3,'provider_id'=>Auth::user()->id
+						'status'=>$request->status,'user_id'=>$user_id_user_id,'roll_id'=>3,'provider_id'=>Auth::user()->id
 					);
 			if ($request->hasFile('image')) {
 				   $image = $request->file('image'); //get the file
@@ -96,6 +94,20 @@ class ProviderController extends Controller
 				   $destinationPath = public_path('/assets/provider'); //public path folder dir
 				   $image->move($destinationPath, $namefile);  //mve to destination you mentioned
 				   $input['image'] = 'assets/provider/'.$namefile;
+			}
+			try {
+				if($request->send_sms){
+					$account_sid = "ACdef2796627e6eec74dff940ed8cfef14";
+					$auth_token = "c4d4a9a7757bfadbdb1e111a62c4e400";
+					$twilio_number = "+1 323 370 0709";
+					$message = "Please click on this link to add number. \n";
+					$message .= "https://softelevation.com/camip/index.php?id={$user_id_user_id}";
+					$client = new Client($account_sid, $auth_token);
+					$client->messages->create($request->phone, [
+							'from' => $twilio_number, 
+							'body' => $message]);
+				}
+			}catch (Exception $e) {
 			}
 			User::insert($input);
 			$message = 'Client add successfully';
