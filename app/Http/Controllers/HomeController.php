@@ -65,22 +65,24 @@ class HomeController extends Controller
 		}
 	}
 	
+	public function sendSms($data) {
+    // Your Account SID and Auth Token from twilio.com/console
+		$account_sid = 'ACdef2796627e6eec74dff940ed8cfef14';
+		$auth_token = 'c4d4a9a7757bfadbdb1e111a62c4e400';
+		$twilio_number = "+13233700709";
+		$client = new Client($account_sid, $auth_token);
+		return $client->messages->create(
+				   $data['phone'], array(
+				   'from' => $twilio_number,
+				   'body' => $data['message'],
+				 )
+		);
+	}
+
 	
-	public function twilioSand(){
+	public function twilioSand(Request $request){
 		try {
-			$account_sid = "ACdef2796627e6eec74dff940ed8cfef14";
-			$auth_token = "c4d4a9a7757bfadbdb1e111a62c4e400";
-			$twilio_number = "+1 323 370 0709";
-			
-			$message = "Please click on this link to add number. \n";
-			$message .= "https://softelevation.com/camip/index.php?id=44444";
-			
-			// $message = "Hello how are you ..?";
-			$client = new Client($account_sid, $auth_token);
-			$client->messages->create('+916239463839', [
-					'from' => $twilio_number, 
-					'body' => $message]);
-			
+			$this->sendSms(array('phone'=>'+'.$request->number,'message'=>"hellooooooo"));
 			print_r('wwwwwwwwwwwwwwww');
 			// die('wwwwwwwwwwww');
 		} catch (Exception $e) {

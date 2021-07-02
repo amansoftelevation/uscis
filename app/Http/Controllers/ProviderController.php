@@ -109,6 +109,10 @@ class ProviderController extends Controller
 				}
 			}catch (Exception $e) {
 			}
+			echo '<pre>';
+			// print_r($request->send_sms);
+			print_r($input);
+			die;
 			User::insert($input);
 			$message = 'Client add successfully';
 		}
